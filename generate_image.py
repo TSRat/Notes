@@ -4,6 +4,8 @@ from PIL import Image
 import io
 import time
 import os
+import sys
+print(sys.executable)
 
 # --- 1. 配置你的 API 密钥 ---
 # 确保这里是你自己的密钥

@@ -1,3 +1,4 @@
 *.pdf
 *.xlsx
+venv/
 .DS_Store
