@@ -1,0 +1,51 @@
+[
+  {
+    "id": "first-contract",
+    "date": "2031-08-18",
+    "time": "08:40",
+    "type": "urgent",
+    "source": "经纪人 · 林澈",
+    "headline": "红炉联把一线队合同放到了桌上",
+    "content": "对方承诺把你放进一线队合练名单，但要求今天中午前签字，并在今晚北港资格赛后报到。北港竞技则愿意保证稳定出场，让你继续熟悉半空间接应。",
+    "termIds": ["half-space"],
+    "experienceId": "first-contract",
+    "choices": [
+      {
+        "id": "stay-north-harbor",
+        "label": "留在北港争取稳定首发",
+        "hint": "保留熟悉环境，把时间换成战术成长。",
+        "effects": { "stamina": 1, "technique": 1, "tactics": 5, "composure": 2, "wellbeing": 3, "reputation": 1 }
+      },
+      {
+        "id": "join-red-forge",
+        "label": "签下红炉联竞争合同",
+        "hint": "更大的舞台，也意味着更高的身体消耗。",
+        "effects": { "stamina": -4, "technique": 2, "tactics": 2, "composure": 1, "wellbeing": -3, "reputation": 4, "currentClubId": "red-forge" }
+      }
+    ]
+  },
+  {
+    "id": "qualifier-callup",
+    "date": "2031-08-18",
+    "time": "07:15",
+    "type": "normal",
+    "source": "北港竞技 · 教练组",
+    "headline": "你进入今晚资格赛的 18 人名单",
+    "content": "教练希望你在右侧内收，帮助中场形成三角站位。赛前会议将在 17:30 开始。",
+    "termIds": ["inverted-winger"],
+    "experienceId": "role-conflict",
+    "choices": []
+  },
+  {
+    "id": "local-press",
+    "date": "2031-08-17",
+    "time": "21:10",
+    "type": "normal",
+    "source": "《港湾体育》",
+    "headline": "青年队连续三场不败，新秀周野跑动数据引起关注",
+    "content": "报道认为你的无球跑动给球队制造了空间，但最后一脚仍需要更果断。",
+    "termIds": ["expected-goals"],
+    "experienceId": "data-disagreement",
+    "choices": []
+  }
+]

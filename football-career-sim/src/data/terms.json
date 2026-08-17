@@ -1,0 +1,544 @@
+[
+  {
+    "id": "player-role",
+    "category": "位置与角色",
+    "title": "位置与角色",
+    "englishTerm": "Position & role",
+    "description": "位置说明球员从哪里开始，角色说明他在有球、无球和转换阶段要完成什么。两名同为边锋的球员，可能分别负责贴边突破和内收接应。",
+    "whyItMatters": "青训选位和转会适配看的是可执行职责，不只是阵容图上的两个字母。",
+    "deepLink": "/career?experience=position-experiment"
+  },
+  {
+    "id": "formation-shape",
+    "category": "位置与角色",
+    "title": "阵型与动态站位",
+    "englishTerm": "Formation & in-possession shape",
+    "description": "4-3-3 等阵型描述起始结构，比赛中的 3-2-5 或 2-3-5 则描述球队控球时如何占据空间。阵型不是所有人固定站住的坐标。",
+    "whyItMatters": "教练换体系时，你需要理解移动后的相互保护，而不是机械记住开场站位。",
+    "deepLink": "/career?experience=tactical-innovation"
+  },
+  {
+    "id": "half-space",
+    "category": "位置与角色",
+    "title": "半空间",
+    "englishTerm": "Half-space",
+    "description": "中路与边路之间的纵向通道。球员在这里接球时，往往能同时连接禁区和边路，并与队友形成多角度传递。",
+    "whyItMatters": "你当前的边锋角色需要频繁内收，接球朝向会决定能否看见套边队友。",
+    "deepLink": "/career?experience=role-conflict"
+  },
+  {
+    "id": "inverted-winger",
+    "category": "位置与角色",
+    "title": "内切型边锋",
+    "englishTerm": "Inverted winger",
+    "description": "从边路起步、向中路移动的攻击手。他为边后卫让出外线，并在禁区前沿增加接球和射门点。",
+    "whyItMatters": "教练要求你从右侧内收时，进攻路线和丢球后的防守责任都会改变。",
+    "deepLink": "/career?experience=role-conflict"
+  },
+  {
+    "id": "inverted-fullback",
+    "category": "位置与角色",
+    "title": "内收型边后卫",
+    "englishTerm": "Inverted full-back",
+    "description": "控球时从边路移动到中场区域的边后卫，用人数优势帮助推进，并让其他球员拉开宽度。",
+    "whyItMatters": "当队友内收后，你的边锋站位可能必须更宽，失球后的回防路线也会改变。",
+    "deepLink": "/career?experience=tactical-innovation"
+  },
+  {
+    "id": "futsal-transfer",
+    "category": "技术发展",
+    "title": "小场与沙滩技术迁移",
+    "englishTerm": "Small-sided skill transfer",
+    "description": "五人制、沙滩足球和街头小场提供高频触球、不同表面平衡、狭小空间决策与快速转换；进入十一人制后，这些能力需要适应更长距离和更复杂的站位。",
+    "whyItMatters": "青训教练不应把你的原有技术清零，而要判断哪些优势能迁移到大场。",
+    "deepLink": "/career?experience=street-to-academy"
+  },
+  {
+    "id": "bio-banding",
+    "category": "青训发展",
+    "title": "生物年龄分组",
+    "englishTerm": "Bio-banding",
+    "description": "按身体成熟程度而非只按出生年份组织部分训练或比赛，目的是减少早熟球员的体格优势掩盖技术判断。它不是永久重排年龄组。",
+    "whyItMatters": "你的青训评价可能受成长速度影响，球探需要把当前体格与长期潜力分开。",
+    "deepLink": "/career?experience=academy-trial"
+  },
+  {
+    "id": "safeguarding",
+    "category": "青训发展",
+    "title": "足球中的保护机制",
+    "englishTerm": "Safeguarding",
+    "description": "组织通过行为规范、风险评估、明确负责人和报告渠道，预防并回应对儿童或成年参与者的骚扰、虐待与剥削。责任不应落在受影响者一人身上。",
+    "whyItMatters": "青训合同、单独训练、旅行和经纪人接触都可能出现权力不对等，需要可使用的保护流程。",
+    "deepLink": "/career?experience=safeguarding-boundary",
+    "sourceIds": ["fifa-guardians"]
+  },
+  {
+    "id": "football-agent",
+    "category": "合同与转会",
+    "title": "足球经纪人",
+    "englishTerm": "Football agent",
+    "description": "代表球员、教练或俱乐部处理与雇佣、注册或转会相关事务的专业人员。许可与代表协议要求会随国际和当地规则变化。",
+    "whyItMatters": "第一份合同和跨境转会涉及利益冲突、费用与期限，必须核对当前适用规则并寻求独立意见。",
+    "deepLink": "/career?experience=first-contract",
+    "sourceIds": ["fifa-agents"]
+  },
+  {
+    "id": "release-clause",
+    "category": "合同与转会",
+    "title": "解约金条款",
+    "englishTerm": "Release clause",
+    "description": "合同中预先约定、在特定条件下影响转会谈判的金额条款。达到金额不一定在所有司法辖区产生完全相同的自动效果。",
+    "whyItMatters": "较低条款可能增加未来流动性，也可能改变俱乐部对培养和续约风险的判断。",
+    "deepLink": "/career?experience=first-contract"
+  },
+  {
+    "id": "loan",
+    "category": "合同与转会",
+    "title": "租借",
+    "englishTerm": "Loan",
+    "description": "球员合同仍属于原俱乐部，但在约定期限内为另一支球队效力。协议会处理工资、出场、召回和医疗协作等问题。",
+    "whyItMatters": "稳定上场可能加快成长，新球队的战术、城市和支持系统也可能增加适应成本。",
+    "deepLink": "/career?experience=loan-pathway"
+  },
+  {
+    "id": "recruitment-profile",
+    "category": "合同与转会",
+    "title": "招募画像",
+    "englishTerm": "Recruitment profile",
+    "description": "俱乐部把位置职责、年龄、身体与技术特征、比赛数据、性格、伤病风险和价格整合成候选标准。它不是一张总评分榜。",
+    "whyItMatters": "转会能否成功取决于你与球队需求的匹配，而不只是知名度和高光片段。",
+    "deepLink": "/career?experience=transfer-fit"
+  },
+  {
+    "id": "counter-press",
+    "category": "战术与分析",
+    "title": "反抢",
+    "englishTerm": "Counter-press",
+    "description": "丢球后的短时间内立即压迫持球者和附近传球路线，争取在对手展开前夺回球权。",
+    "whyItMatters": "高压球队会要求前场球员反复冲刺，战术收益、位置纪律和体能代价必须一起看。",
+    "deepLink": "/career?experience=role-conflict"
+  },
+  {
+    "id": "rest-defense",
+    "category": "战术与分析",
+    "title": "进攻保护结构",
+    "englishTerm": "Rest defence",
+    "description": "球队控球进攻时留在球后或关键区域、用于限制对手反击的站位结构。它关注的是进攻发生时如何提前防守。",
+    "whyItMatters": "你的无球位置不仅要创造进攻空间，还会决定丢球后球队能否及时封堵反击。",
+    "deepLink": "/career?experience=role-conflict"
+  },
+  {
+    "id": "pressing-trigger",
+    "category": "战术与分析",
+    "title": "压迫触发点",
+    "englishTerm": "Pressing trigger",
+    "description": "球队约定在特定信号出现时集体上抢，例如回传、停球方向不佳或球被传向边线。单人盲目冲刺不构成整体压迫。",
+    "whyItMatters": "赛前对手报告会告诉你何时启动、队友封哪条路线，以及失败后如何退回结构。",
+    "deepLink": "/career?experience=opposition-report"
+  },
+  {
+    "id": "opposition-analysis",
+    "category": "战术与分析",
+    "title": "对手分析",
+    "englishTerm": "Opposition analysis",
+    "description": "通过比赛视频、数据和现场观察识别对手稳定的进攻、防守、转换与定位球模式，并把发现转成有限的可执行任务。",
+    "whyItMatters": "职业球员不只观看高光；你需要知道今晚具体压谁、让出哪里、如何利用对手弱点。",
+    "deepLink": "/career?experience=opposition-report"
+  },
+  {
+    "id": "set-piece",
+    "category": "战术与分析",
+    "title": "定位球专项",
+    "englishTerm": "Set-piece routine",
+    "description": "角球、任意球、界外球和点球中的预设配合，包括发球方式、跑动、掩护、二点球和失误后的保护。",
+    "whyItMatters": "定位球角色可能决定你是否进入首发，也要求全队精确执行而非只依赖主罚者。",
+    "deepLink": "/career?experience=set-piece-specialist"
+  },
+  {
+    "id": "second-ball",
+    "category": "战术与分析",
+    "title": "二点球",
+    "englishTerm": "Second ball",
+    "description": "第一次争顶、解围或扑救后落到附近区域的球。球队会提前安排谁争第一点、谁保护可能的落点。",
+    "whyItMatters": "定位球和长传对抗中，控制二点球能让一次不完整进攻继续，也能阻止对手反击。",
+    "deepLink": "/career?experience=set-piece-specialist"
+  },
+  {
+    "id": "expected-goals",
+    "category": "数据与研究",
+    "title": "预期进球（xG）",
+    "englishTerm": "Expected goals",
+    "description": "根据射门位置、角度和进攻方式等特征估计机会转化为进球的概率。它描述一类机会的历史质量，不预测某一脚必进或必失。",
+    "whyItMatters": "媒体批评最后一脚时，xG 能帮助区分机会选择和实际转化，但必须与视频和样本量一起看。",
+    "deepLink": "/career?experience=data-disagreement"
+  },
+  {
+    "id": "data-limitations",
+    "category": "数据与研究",
+    "title": "数据局限与证据链",
+    "englishTerm": "Data limitations",
+    "description": "每个指标只记录比赛的一部分，并受样本、模型、联赛环境与数据定义影响。可靠分析会把数字、视频和问题背景连接起来。",
+    "whyItMatters": "你可以质疑一份招募报告，但需要指出它漏掉了什么，而不是在数据崇拜与完全拒绝之间二选一。",
+    "deepLink": "/career?experience=data-disagreement"
+  },
+  {
+    "id": "source-literacy",
+    "category": "数据与研究",
+    "title": "足球资料辨识",
+    "englishTerm": "Source literacy",
+    "description": "官方比赛报告、同期新闻、口述回忆、数据平台和纪录片承担不同证据角色。后来的精彩叙事不自动等于当时的事实。",
+    "whyItMatters": "回顾自己的生涯或理解俱乐部历史时，你需要区分原始记录、机构解释和编辑分析。",
+    "deepLink": "/career?experience=football-archive"
+  },
+  {
+    "id": "microcycle",
+    "category": "训练与表现",
+    "title": "比赛周训练周期",
+    "englishTerm": "Microcycle",
+    "description": "围绕一场或多场比赛安排恢复、力量、战术、速度和赛前减量的一周计划。内容随赛程和球员状态变化。",
+    "whyItMatters": "一周双赛时不能复制普通训练周；每次加练都会改变恢复和受伤风险。",
+    "deepLink": "/career?experience=schedule-congestion"
+  },
+  {
+    "id": "load-management",
+    "category": "训练与表现",
+    "title": "负荷管理",
+    "englishTerm": "Load management",
+    "description": "综合训练、比赛、旅行、睡眠和个体恢复信号，调整运动量与强度。GPS 数值只是输入之一，不是自动决定。",
+    "whyItMatters": "疲劳既影响场上决策，也影响伤病风险；是否出场需要球员、教练和医疗团队共同判断。",
+    "deepLink": "/career?experience=schedule-congestion"
+  },
+  {
+    "id": "return-to-play",
+    "category": "健康与福祉",
+    "title": "回归比赛过程",
+    "englishTerm": "Return to play",
+    "description": "伤病后从恢复基本功能、逐步增加训练，到重新参加比赛的分阶段过程。时间表取决于具体伤情和专业评估。",
+    "whyItMatters": "合同、比分或位置竞争不能替代医疗判断；本网页只解释流程，不提供个人治疗建议。",
+    "deepLink": "/career?experience=acl-rehabilitation"
+  },
+  {
+    "id": "concussion-protocol",
+    "category": "健康与福祉",
+    "title": "脑震荡识别与保护",
+    "englishTerm": "Concussion protocol",
+    "description": "头部受到冲击后，症状可能并不立即可见；疑似情况需要停止参与、由专业人员评估，并按协议逐步回归活动。",
+    "whyItMatters": "关键比赛也不能让球员自行证明没事；这是一项安全流程，不是意志力测试。",
+    "deepLink": "/career?experience=concussion-removal",
+    "sourceIds": ["fifa-concussion"]
+  },
+  {
+    "id": "women-player-health",
+    "category": "健康与福祉",
+    "title": "女足球员健康支持",
+    "englishTerm": "Women player health",
+    "description": "女足球员需要同等专业、资源充足且个体化的运动医学支持；研究和设施长期不足会影响预防、诊断与康复质量。",
+    "whyItMatters": "讨论 ACL、月经健康或训练负荷时应避免把群体趋势当成个人命运，并由专业团队作个体判断。",
+    "deepLink": "/career?experience=acl-rehabilitation"
+  },
+  {
+    "id": "player-wellbeing",
+    "category": "健康与福祉",
+    "title": "球员福祉",
+    "englishTerm": "Player wellbeing",
+    "description": "把睡眠、心理健康、家庭、身份、安全和长期身体状况视为竞技环境的一部分，而不是成绩以外的私人问题。",
+    "whyItMatters": "倦怠、退役和跨国适应都会影响表现；寻求支持不等于缺乏职业精神。",
+    "deepLink": "/career?experience=burnout"
+  },
+  {
+    "id": "anti-doping",
+    "category": "健康与福祉",
+    "title": "反兴奋剂与补剂风险",
+    "englishTerm": "Anti-doping",
+    "description": "禁用物质和方法清单按年度更新，部分规则区分赛内与赛外。药物、治疗和补剂应由球员与合格专业人员核对当前权威清单。",
+    "whyItMatters": "天然或非处方标签不能证明合规；本网页不会替你判断具体产品。",
+    "deepLink": "/career?experience=supplement-check",
+    "sourceIds": ["wada-list"]
+  },
+  {
+    "id": "offside",
+    "category": "规则与裁判",
+    "title": "越位位置与越位犯规",
+    "englishTerm": "Offside",
+    "description": "处于越位位置本身不一定构成犯规；球员还要在队友触球时满足位置条件，并实际参与比赛、干扰对手或获益。",
+    "whyItMatters": "你的启动时机影响进攻，判罚也必须依据当赛季 IFAB 规则而不是短视频印象。",
+    "deepLink": "/career?experience=debut-var",
+    "sourceIds": ["ifab-laws"]
+  },
+  {
+    "id": "var-protocol",
+    "category": "规则与裁判",
+    "title": "视频助理裁判协议",
+    "englishTerm": "VAR protocol",
+    "description": "VAR 在规则限定的比赛事件和明确错误框架内协助裁判，不是把每个有争议的画面重新裁判一遍。具体范围会随规则版本更新。",
+    "whyItMatters": "等待复核时你仍要管理情绪；赛后判断应先核对当前协议与完整画面。",
+    "deepLink": "/career?experience=debut-var",
+    "sourceIds": ["ifab-laws"]
+  },
+  {
+    "id": "referee-protocol",
+    "category": "规则与裁判",
+    "title": "球员与裁判沟通",
+    "englishTerm": "Player–referee communication",
+    "description": "裁判团队通过口头说明、身体语言和队长沟通管理比赛。竞赛可能采用限制围堵裁判的额外指南。",
+    "whyItMatters": "队长可以表达关切，但必须知道沟通边界和正式报告渠道，避免让争执升级。",
+    "deepLink": "/career?experience=captaincy",
+    "sourceIds": ["ifab-laws"]
+  },
+  {
+    "id": "match-integrity",
+    "category": "规则与裁判",
+    "title": "竞赛诚信",
+    "englishTerm": "Match integrity",
+    "description": "防范操纵比赛、非法博彩影响、内幕信息滥用和其他破坏公平竞争的行为。操纵局部事件同样属于严重风险。",
+    "whyItMatters": "受到试探时应停止接触、保存信息并使用官方报告渠道，不要自行调查或谈条件。",
+    "deepLink": "/career?experience=integrity-approach"
+  },
+  {
+    "id": "media-narrative",
+    "category": "文化与社会",
+    "title": "媒体叙事",
+    "englishTerm": "Media narrative",
+    "description": "报道、转播、纪录片和社交媒体从大量事实中选择人物、画面和因果，形成容易传播的球星或失败故事。",
+    "whyItMatters": "你既是比赛参与者，也是被叙述对象；回应前要区分事实错误、合理解释和无法控制的公众评价。",
+    "deepLink": "/career?experience=media-breakthrough"
+  },
+  {
+    "id": "derby-identity",
+    "category": "文化与社会",
+    "title": "德比与地方身份",
+    "englishTerm": "Derby & local identity",
+    "description": "同城或历史对手的比赛常连接社区、阶级、宗教、迁移和城市记忆。每场德比的来源不同，不能套用同一个敌对模板。",
+    "whyItMatters": "新球员要理解情绪从何而来，同时拒绝暴力和歧视被包装成传统。",
+    "deepLink": "/career?experience=first-derby-culture"
+  },
+  {
+    "id": "supporter-ritual",
+    "category": "文化与社会",
+    "title": "球迷仪式",
+    "englishTerm": "Supporter ritual",
+    "description": "队歌、助威、tifo、客场旅行和纪念活动把观众组织成共同体，也传递俱乐部对过去的解释。",
+    "whyItMatters": "球员的庆祝、沉默或公开立场会被放进这些共同记忆中理解。",
+    "deepLink": "/career?experience=derby-ritual-prime"
+  },
+  {
+    "id": "collective-memory",
+    "category": "文化与社会",
+    "title": "足球的集体记忆与创伤",
+    "englishTerm": "Collective memory & trauma",
+    "description": "重大胜负、灾难和不公会通过纪念、媒体重播与代际讲述进入群体记忆。记忆有现实影响，但可能与完整史料不同。",
+    "whyItMatters": "成为某次国家失利的符号时，你需要个人心理支持，也需要理解公众为何不断返回那一刻。",
+    "deepLink": "/career?experience=national-trauma"
+  },
+  {
+    "id": "national-team-identity",
+    "category": "文化与社会",
+    "title": "国家队身份",
+    "englishTerm": "National-team identity",
+    "description": "国家队把俱乐部球员置于国籍、地区、移民、语言和政治象征中。一个人可以同时拥有多层归属。",
+    "whyItMatters": "大赛采访和选队决定会被当作身份表态，不能只按竞技分钟理解。",
+    "deepLink": "/career?experience=major-tournament"
+  },
+  {
+    "id": "global-football-mobility",
+    "category": "文化与社会",
+    "title": "全球球员流动",
+    "englishTerm": "Global football mobility",
+    "description": "跨国转会连接工作许可、殖民历史、语言、家庭迁移、经纪网络和不平等的联赛经济。球员流动并非没有摩擦的全球市场。",
+    "whyItMatters": "新联赛的战术适配与生活安全同样重要，俱乐部不能把文化融入完全推给球员。",
+    "deepLink": "/career?experience=global-mobility"
+  },
+  {
+    "id": "anti-discrimination",
+    "category": "文化与社会",
+    "title": "反歧视与包容",
+    "englishTerm": "Anti-discrimination & inclusion",
+    "description": "反种族主义、反恐同和性别平等需要预防规则、可用的报告渠道、现场响应、支持受影响者和后续问责，而不只是口号。",
+    "whyItMatters": "球员可能是受影响者、队友、队长或公众人物，每个角色都有不同但具体的行动责任。",
+    "deepLink": "/career?experience=discrimination-response"
+  },
+  {
+    "id": "dressing-room-leadership",
+    "category": "团队与治理",
+    "title": "更衣室领导力",
+    "englishTerm": "Dressing-room leadership",
+    "description": "正式队长、资深球员和非正式关系共同影响训练标准、冲突处理和谁能发声。领导不是单向命令。",
+    "whyItMatters": "从新秀到老将，你的责任会从适应规则变成保护沟通和组织连续性。",
+    "deepLink": "/career?experience=dressing-room-hierarchy"
+  },
+  {
+    "id": "sporting-director",
+    "category": "团队与治理",
+    "title": "体育总监",
+    "englishTerm": "Sporting director",
+    "description": "负责把俱乐部长期竞技方向连接到主教练任命、招募、青训、合同和阵容规划的管理角色。具体权限因俱乐部而异。",
+    "whyItMatters": "你的转会和续约可能服务于长期阵容计划，而不仅是当前主教练的个人偏好。",
+    "deepLink": "/career?experience=sporting-director-path"
+  },
+  {
+    "id": "club-ownership",
+    "category": "团队与治理",
+    "title": "俱乐部所有权与治理",
+    "englishTerm": "Club ownership & governance",
+    "description": "会员、私人投资者、上市公司或国家相关资本等所有权结构，会影响董事会问责、长期目标和与球迷的关系。",
+    "whyItMatters": "所有权决策最终会改变教练、预算、工资和俱乐部身份，球员无法把它当作完全场外的问题。",
+    "deepLink": "/career?experience=supporter-ownership-protest"
+  },
+  {
+    "id": "financial-regulation",
+    "category": "团队与治理",
+    "title": "俱乐部财政监管",
+    "englishTerm": "Financial regulation",
+    "description": "联赛或赛事通过收入、成本、亏损、工资或注册规则约束俱乐部财务。不同体系的计算方式和处罚并不相同。",
+    "whyItMatters": "财政问题可能带来注册限制、被迫出售球员或拖欠工资，具体判断必须查看适用赛制的当前规则。",
+    "deepLink": "/career?experience=financial-crisis"
+  },
+  {
+    "id": "multi-club-model",
+    "category": "团队与治理",
+    "title": "多俱乐部集团",
+    "englishTerm": "Multi-club ownership model",
+    "description": "同一资本或控制网络关联多支俱乐部，并共享招募、数据、人员或商业资源。它也会引出竞技完整性和利益冲突问题。",
+    "whyItMatters": "集团内部转会看似顺畅，但球员仍需要独立判断新球队是否适合自己的发展。",
+    "deepLink": "/career?experience=multi-club-transfer"
+  },
+  {
+    "id": "image-rights",
+    "category": "团队与治理",
+    "title": "肖像权与商业形象",
+    "englishTerm": "Image rights",
+    "description": "围绕姓名、形象、声音和个人品牌商业使用的权利与合同安排，会与俱乐部和赞助商义务交叉。",
+    "whyItMatters": "一次广告并非普通采访；球员应理解使用范围、期限与价值冲突，并取得适用法律意见。",
+    "deepLink": "/career?experience=image-rights-sponsor"
+  },
+  {
+    "id": "data-privacy",
+    "category": "科技与伦理",
+    "title": "球员数据隐私",
+    "englishTerm": "Player data privacy",
+    "description": "追踪、体能、医疗和行为数据可能在俱乐部、联赛、平台和招募网络间流动。采集目的不应自动扩张为无限使用。",
+    "whyItMatters": "转会或集团共享数据时，你需要知道谁能访问、用于什么、保存多久，以及如何纠正错误。",
+    "deepLink": "/career?experience=multi-club-transfer"
+  },
+  {
+    "id": "pitch-surface",
+    "category": "场地与运行",
+    "title": "草皮与比赛表面",
+    "englishTerm": "Pitch surface",
+    "description": "天然草、混合草和人工表面在维护、排水、硬度和气候适应上各有条件。场地状态会改变球速、动作选择和运营负担。",
+    "whyItMatters": "赛前准备不只看对手；鞋钉、传球力度和身体负担都要结合当日场地评估。",
+    "deepLink": "/career?experience=sustainable-legacy",
+    "sourceIds": ["fifa-stadiums"]
+  },
+  {
+    "id": "matchday-operations",
+    "category": "场地与运行",
+    "title": "比赛日运营",
+    "englishTerm": "Matchday operations",
+    "description": "票务、安保、医疗、媒体、球队流线、交通、疏散和现场沟通共同让一场比赛安全进行。它是一套协同系统。",
+    "whyItMatters": "发生看台紧急事件时，球员应服从现场指挥；比赛结果必须让位于人员安全。",
+    "deepLink": "/career?experience=stadium-emergency",
+    "sourceIds": ["fifa-stadiums"]
+  },
+  {
+    "id": "stadium-accessibility",
+    "category": "场地与运行",
+    "title": "球场无障碍",
+    "englishTerm": "Stadium accessibility",
+    "description": "从到达、入口、座席、卫生设施到视觉、听觉和触觉信息，场地和服务都应让不同残障人士能够安全、尊严地参与。",
+    "whyItMatters": "无障碍不是附加座位数量；球员参与社区项目或紧急响应时也会接触完整服务链。",
+    "deepLink": "/career?experience=grassroots-foundation",
+    "sourceIds": ["fifa-stadiums"]
+  },
+  {
+    "id": "heat-protocol",
+    "category": "场地与运行",
+    "title": "高温比赛安全",
+    "englishTerm": "Extreme-heat match safety",
+    "description": "高温会影响开球时间、补水、冷却、医疗监测和赛程决策。具体措施取决于赛事规则、环境评估和医疗意见。",
+    "whyItMatters": "球员不能仅凭意志忽略风险；本网页不提供个人高温训练或医疗建议。",
+    "deepLink": "/career?experience=extreme-heat"
+  },
+  {
+    "id": "sustainable-football",
+    "category": "场地与运行",
+    "title": "足球的可持续运行",
+    "englishTerm": "Sustainable football operations",
+    "description": "球场能源与材料、草皮用水、球队和球迷旅行、赛程以及社区长期使用共同形成环境、社会和经济影响。",
+    "whyItMatters": "球员可以推动更合理的旅行和安全安排，但可持续性不能只由个人抵消行为承担。",
+    "deepLink": "/career?experience=sustainable-legacy",
+    "sourceIds": ["fifa-stadiums"]
+  },
+  {
+    "id": "inclusive-football",
+    "category": "场地与运行",
+    "title": "包容性足球形态",
+    "englishTerm": "Inclusive football formats",
+    "description": "盲人足球、截肢者足球、电动轮椅足球、脑瘫足球、聋人足球和健步足球等都有适配规则与参与环境。",
+    "whyItMatters": "职业球员参与社区项目时，应让对应群体共同设计活动，而不是把包容性简化成一次展示。",
+    "deepLink": "/career?experience=grassroots-foundation"
+  },
+  {
+    "id": "goalkeeper-specialism",
+    "category": "位置与角色",
+    "title": "门将专项体系",
+    "englishTerm": "Goalkeeper specialism",
+    "description": "门将训练把扑救、接高球、站位、出击、脚下分配、指挥和落地动作作为互相连接的职责，并配合位置特有的心理与伤病预防。",
+    "whyItMatters": "评价门将不能只数精彩扑救；球队推进方式、禁区控制和失误后的心理恢复都会改变他的决定。",
+    "deepLink": "/career?experience=goalkeeper-specialist-camp"
+  },
+  {
+    "id": "football-support-team",
+    "category": "团队与治理",
+    "title": "职业足球支持团队",
+    "englishTerm": "Football performance staff",
+    "description": "主教练、助教、分析师、球探、队医、理疗师、体能教练、营养师、心理支持和草皮等岗位以不同专业边界共同支持球员。",
+    "whyItMatters": "同一项建议可能同时涉及竞技、医疗和合同后果，球员需要知道负责人、证据来源与可以提出异议的渠道。",
+    "deepLink": "/career?experience=performance-support-meeting"
+  },
+  {
+    "id": "performance-technology",
+    "category": "科技与伦理",
+    "title": "表现科技与可穿戴监测",
+    "englishTerm": "Performance technology",
+    "description": "GPS、心率、视频追踪、力量测试和训练软件把部分运动负荷与动作转成数据，但设备误差、使用目的和个体背景都会影响解释。",
+    "whyItMatters": "监测能支持训练调整，却不应自动覆盖球员感受、医学判断或数据隐私；一次异常读数也不是完整诊断。",
+    "deepLink": "/career?experience=performance-support-meeting"
+  },
+  {
+    "id": "football-aesthetics",
+    "category": "文化与社会",
+    "title": "足球美学与风格判断",
+    "englishTerm": "Football aesthetics",
+    "description": "人们会从控球、速度、身体动作、防守秩序、偶然性、球衣、建筑和转播镜头判断足球是否漂亮，但这些标准来自不同历史和文化位置。",
+    "whyItMatters": "当媒体把赢法分成高贵或丑陋时，球员可以讨论具体战术和观看经验，而不是把审美标签当成客观赛果。",
+    "deepLink": "/career?experience=football-aesthetics-debate"
+  },
+  {
+    "id": "football-simulation-culture",
+    "category": "文化与社会",
+    "title": "足球游戏、模拟与评分文化",
+    "englishTerm": "Football simulation culture",
+    "description": "足球游戏、模拟经营和电竞用属性、潜力与算法重建比赛世界，既帮助球迷学习阵容，也会制造总评分等同真实能力的错觉。",
+    "whyItMatters": "你的虚拟评分会影响公众预期和商业形象，但真实招募仍需结合比赛职责、环境、视频、数据与现场判断。",
+    "deepLink": "/career?experience=virtual-rating-culture"
+  },
+  {
+    "id": "football-dispute-resolution",
+    "category": "合同与转会",
+    "title": "足球争议解决",
+    "englishTerm": "Football dispute resolution",
+    "description": "球员合同、注册、纪律、工资、保险和伤病责任可能进入俱乐部内部程序、足协机构、仲裁或法院，适用途径取决于合同与管辖规则。",
+    "whyItMatters": "网页不能判断你的具体权利；发生争议时应保存记录、理解期限，并取得独立且具备适用资质的专业法律意见。",
+    "deepLink": "/career?experience=contract-dispute-resolution"
+  },
+  {
+    "id": "competition-ecosystem",
+    "category": "团队与治理",
+    "title": "世界赛事与组织体系",
+    "englishTerm": "Competition ecosystem",
+    "description": "国际足联、各洲足联、国家足协、职业联盟与赛事组织者分别管理不同范围的国家队、俱乐部、联赛、杯赛和青少年竞赛。",
+    "whyItMatters": "入选国家队或跨国参赛时，注册、赛程、纪律和商业义务可能来自不同组织，不能把所有规则理解成同一套。",
+    "deepLink": "/career?experience=major-tournament"
+  }
+]

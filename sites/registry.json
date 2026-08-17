@@ -1,0 +1,16 @@
+{
+  "sites": [
+    {
+      "id": "football-career-sim",
+      "name": "第 91 分钟 · 足球球员职业生涯模拟器",
+      "type": "creative-interactive-spa",
+      "source": "football-career-sim/src",
+      "buildOutput": "football-career-sim/dist",
+      "buildCommand": "npm --prefix football-career-sim run build",
+      "previewStrategy": "exact-commit raw.githack preview of football-career-sim/dist/index.html",
+      "routes": ["/", "/career", "/database", "/match/:id"],
+      "languages": ["zh-CN"],
+      "status": "review"
+    }
+  ]
+}

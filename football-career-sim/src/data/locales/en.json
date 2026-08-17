@@ -1,0 +1,20 @@
+{
+  "brand.name": "91st Minute",
+  "brand.subtitle": "Football Career Simulator",
+  "nav.home": "New career",
+  "nav.career": "Career hub",
+  "nav.database": "Database",
+  "nav.match": "Tonight's match",
+  "notebook.news": "News and signals",
+  "notebook.career": "Player and club",
+  "notebook.match": "Match log",
+  "action.start": "Create academy profile",
+  "action.backCareer": "Back to career hub",
+  "action.clearSearch": "Clear search",
+  "status.visitor": "Guest profile",
+  "status.saved": "Local save",
+  "timer.remaining": "{seconds} seconds remaining",
+  "timer.expired": "Decision window closed",
+  "toast.archiveCreated": "Academy profile created. Your first career choice is waiting.",
+  "empty.search": "No terms matched “{query}”."
+}
