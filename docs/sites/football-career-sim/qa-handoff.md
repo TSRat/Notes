@@ -9,9 +9,9 @@ ANTIGRAVITY_PHASE_3: PENDING
 | 检查 | 结果 |
 | --- | --- |
 | `npm run lint` | PASS，0 warnings |
-| `npm test -- --run` | PASS，3 个测试文件、11 个测试 |
+| `npm test -- --run` | PASS，3 个测试文件、12 个测试 |
 | `npm run build` | PASS，Vite 生产构建与 `404.html` 静态回退生成成功 |
-| `npm run check:bundle` | PASS，核心 JS 281.1KB / 500KB 未压缩预算 |
+| `npm run check:bundle` | PASS，核心 JS 281.2KB / 500KB 未压缩预算 |
 | `npm audit --audit-level=high` | PASS，0 vulnerabilities |
 | 内容合同 | PASS，56 个生涯情境、59 个术语、6 个阶段、术语/来源/深链完整 |
 | 初学者启发式扫描 | 0 个 P0/P1/P2；1 个经人工确认的 P3 数字关系误报 |

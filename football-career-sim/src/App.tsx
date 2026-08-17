@@ -12,6 +12,7 @@ function RouteAnnouncer() {
   useEffect(() => {
     const titles: Record<string, string> = {
       '/': '新建球员档案',
+      '/index.html': '新建球员档案',
       '/career': '职业中心',
       '/database': '足球百科',
     }
@@ -29,6 +30,7 @@ export default function App() {
       <RouteAnnouncer />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/index.html" element={<HomePage />} />
         <Route path="/career" element={<CareerPage />} />
         <Route path="/database" element={<DatabasePage />} />
         <Route path="/match/:id" element={<MatchdayPage />} />

@@ -8,6 +8,11 @@ describe('getRouterBase', () => {
     ).toBe('/TSRat/Python/abc123/football-career-sim/dist')
   })
 
+  it('leaves the index filename available to the route table', () => {
+    const pathname = '/TSRat/Python/abc123/football-career-sim/dist/index.html'
+    expect(pathname.slice(getRouterBase(pathname).length)).toBe('/index.html')
+  })
+
   it('keeps the development root', () => {
     expect(getRouterBase('/career')).toBe('/')
   })
