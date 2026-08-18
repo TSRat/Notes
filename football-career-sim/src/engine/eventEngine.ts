@@ -38,7 +38,9 @@ function canUseTemplate(career: SimCareer, template: CareerEventTemplate) {
   if (career.player.age < template.ageRange[0] || career.player.age > template.ageRange[1]) return false
   const occurrences = career.eventOccurrences[template.id] ?? 0
   if (ONE_TIME_EVENTS.has(template.id)) return occurrences === 0
-  return occurrences < 4
+  const lastDecision = [...career.timeline].reverse().find((entry) => entry.type === 'decision')
+  if (lastDecision?.sourceEventId === template.id) return false
+  return occurrences < 2
 }
 
 function makeInstance(career: SimCareer, template: CareerEventTemplate, sequence: number): CareerEventInstance {

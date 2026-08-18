@@ -1,96 +1,54 @@
-import { ArrowRight, LockKeyhole, TimerReset } from 'lucide-react'
-import { useEffect, useId, useState, type CSSProperties } from 'react'
-import type { Choice } from '../app/types'
-import { t } from '../i18n'
+import { Clock3, CornerDownRight } from 'lucide-react'
+import { useEffect, useRef, useState, type CSSProperties } from 'react'
+import type { CareerEventInstance } from '../engine/careerTypes'
 
-type DecisionPanelProps = {
-  eventId: string
-  eyebrow: string
-  title: string
-  prompt: string
-  choices: Choice[]
-  seconds?: number
-  resolved?: boolean
-  onChoose: (choice: Choice) => void
-}
+type TimerStyle = CSSProperties & { '--decision-seconds': string }
 
-export function DecisionPanel({
-  eventId,
-  eyebrow,
-  title,
-  prompt,
-  choices,
-  seconds = 12,
-  resolved = false,
-  onChoose,
-}: DecisionPanelProps) {
-  const [remaining, setRemaining] = useState(seconds)
-  const [expired, setExpired] = useState(false)
-  const promptId = useId()
+export function DecisionPanel({ event, onChoose, onExpire }: { event: CareerEventInstance; onChoose: (choiceId: string) => void; onExpire: () => void }) {
+  const [remaining, setRemaining] = useState(event.timedSeconds)
+  const expirySent = useRef(false)
+  const expired = remaining === 0
 
   useEffect(() => {
-    if (resolved || expired) return
-    const timer = window.setInterval(() => {
-      setRemaining((value) => {
-        if (value <= 1) {
-          window.clearInterval(timer)
-          setExpired(true)
-          return 0
-        }
-        return value - 1
-      })
-    }, 1000)
-    return () => window.clearInterval(timer)
-  }, [expired, resolved])
+    setRemaining(event.timedSeconds)
+    expirySent.current = false
+  }, [event.instanceId, event.timedSeconds])
 
-  const isClosed = resolved || expired
+  useEffect(() => {
+    if (remaining === null || remaining <= 0) return
+    const timer = window.setTimeout(() => setRemaining(remaining - 1), 1000)
+    return () => window.clearTimeout(timer)
+  }, [remaining])
+
+  useEffect(() => {
+    if (remaining !== 0 || expirySent.current) return
+    expirySent.current = true
+    onExpire()
+  }, [onExpire, remaining])
 
   return (
-    <section className="decision-panel" aria-labelledby={`${eventId}-title`} aria-describedby={promptId}>
+    <section className="decision-panel" aria-labelledby={`decision-${event.instanceId}`}>
       <div className="decision-panel__topline">
-        <span className="eyebrow eyebrow--urgent">{eyebrow}</span>
-        <span
-          className="timer-copy"
-          role="timer"
-          aria-live={remaining <= 5 && !isClosed ? 'assertive' : 'polite'}
-          aria-atomic="true"
-        >
-          {isClosed ? (
-            <><LockKeyhole aria-hidden="true" size={15} /> {resolved ? '决定已记录' : t('timer.expired')}</>
-          ) : (
-            <><TimerReset aria-hidden="true" size={15} /> {t('timer.remaining', { seconds: remaining })}</>
-          )}
-        </span>
+        <span>KEY MOMENT · {event.stage.toUpperCase()}</span>
+        {remaining !== null ? <strong className={remaining <= 3 ? 'is-urgent' : ''}><Clock3 aria-hidden="true" /> {expired ? '窗口已关闭' : `${remaining} 秒`}</strong> : <strong>结果不会被提前揭示</strong>}
       </div>
-      <h2 id={`${eventId}-title`}>{title}</h2>
-      <p id={promptId} className="decision-panel__prompt">{prompt}</p>
-
-      <div
-        className={`pressure-bar ${isClosed ? 'pressure-bar--stopped' : ''}`}
-        aria-hidden="true"
-        style={{ '--timer-duration': `${seconds}s` } as CSSProperties}
-      >
-        <span />
-      </div>
-
-      <div className="decision-list">
-        {choices.map((choice, index) => (
-          <button
-            className="decision-button"
-            type="button"
-            key={choice.id}
-            disabled={isClosed}
-            onClick={() => onChoose(choice)}
-          >
-            <span className="decision-button__index">0{index + 1}</span>
-            <span>
-              <strong>{choice.label}</strong>
-              <small>{choice.hint}</small>
-            </span>
-            <ArrowRight className="decision-button__arrow" aria-hidden="true" size={20} />
+      {event.timedSeconds ? (
+        <div className="pressure-track" aria-hidden="true"><span key={event.instanceId} style={{ '--decision-seconds': `${event.timedSeconds}s` } as TimerStyle} /></div>
+      ) : null}
+      <h2 id={`decision-${event.instanceId}`}>{event.title}</h2>
+      <p>{event.summary}</p>
+      <div className="decision-options">
+        {event.choices.map((choice, index) => (
+          <button key={choice.id} type="button" disabled={expired} onClick={() => onChoose(choice.id)}>
+            <span>{String(index + 1).padStart(2, '0')}</span>
+            <strong>{choice.label}</strong>
+            <small>{choice.riskTag}</small>
+            <CornerDownRight aria-hidden="true" />
           </button>
         ))}
       </div>
+      <p className="decision-panel__contract">你能看到已知条件与风险方向，但成功概率不会显示。相同选择在不同生涯中可能产生不同结果。</p>
+      {remaining !== null ? <span className="visually-hidden" aria-live="assertive">{expired ? '决定窗口已经关闭' : `还剩 ${remaining} 秒`}</span> : null}
     </section>
   )
 }

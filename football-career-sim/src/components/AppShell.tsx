@@ -1,59 +1,50 @@
-import { BookOpen, Home, Radio, UserRound } from 'lucide-react'
-import { useCallback, useState, type ReactNode } from 'react'
-import { Link, NavLink, useNavigate } from 'react-router-dom'
+import { Earth, History, LayoutList, Plus, UserRound } from 'lucide-react'
+import { type ReactNode } from 'react'
+import { Link, NavLink } from 'react-router-dom'
 import { useCareer } from '../app/CareerContext'
-import { getClub } from '../data/db'
-import { t } from '../i18n'
-import { ClubMark } from './ClubMark'
-import { EncyclopediaPanel } from './EncyclopediaPanel'
-import { ResponsiveDrawer } from './ResponsiveDrawer'
+import { getWorldClub } from '../data/world/worldData'
+import { ClubWordmark } from './ClubWordmark'
+import { getClubThemeStyle } from './clubTheme'
+import { MobileTabbar } from './MobileTabbar'
+import { OverallBadge } from './OverallBadge'
 import { ToastRegion } from './ToastRegion'
+
+const SAVE_LABELS = {
+  idle: '未建立存档',
+  saving: '正在保存',
+  saved: '已保存到本机',
+  error: '保存失败',
+}
 
 export function AppShell({ children, pageLabel }: { children: ReactNode; pageLabel: string }) {
   const { state } = useCareer()
-  const navigate = useNavigate()
-  const [databaseOpen, setDatabaseOpen] = useState(false)
-  const club = getClub(state.player.currentClubId)
-  const closeDatabase = useCallback(() => setDatabaseOpen(false), [])
-
-  const openDatabase = () => {
-    if (window.matchMedia('(max-width: 767px)').matches) navigate('/database')
-    else setDatabaseOpen(true)
-  }
+  const career = state.career
+  const club = career ? getWorldClub(career.player.currentClubId) : undefined
 
   return (
-    <div className={`app-root ${club.themeClass}`}>
+    <div className="app-root" style={getClubThemeStyle(club)}>
       <header className="site-header">
-        <Link className="brand-lockup" to="/" aria-label={`${t('brand.name')}，${t('brand.subtitle')}，返回首页`}>
+        <Link className="brand-lockup" to="/" aria-label="第 91 分钟，返回首页">
           <span className="brand-lockup__number">91</span>
-          <span>
-            <strong>{t('brand.name')}</strong>
-            <small>{t('brand.subtitle')}</small>
-          </span>
+          <span><strong>第 91 分钟</strong><small>PLAYER CAREER SIMULATOR</small></span>
         </Link>
-
         <nav className="desktop-nav" aria-label="主导航">
-          <NavLink to="/" end><Home aria-hidden="true" size={16} /> {t('nav.home')}</NavLink>
-          <NavLink to="/career"><UserRound aria-hidden="true" size={16} /> {t('nav.career')}</NavLink>
-          <NavLink to="/match/final-qualifier"><Radio aria-hidden="true" size={16} /> {t('nav.match')}</NavLink>
-          <button type="button" onClick={openDatabase}><BookOpen aria-hidden="true" size={16} /> {t('nav.database')}</button>
+          <NavLink to="/career"><LayoutList aria-hidden="true" /> 生涯</NavLink>
+          <NavLink to="/career/player"><UserRound aria-hidden="true" /> 球员</NavLink>
+          <NavLink to="/world"><Earth aria-hidden="true" /> 足球世界</NavLink>
+          <NavLink to="/museum"><History aria-hidden="true" /> 博物馆</NavLink>
         </nav>
-
         <div className="header-context">
           <span className="header-context__page">{pageLabel}</span>
-          <ClubMark clubId={club.id} compact />
-          <span className="header-context__player">
-            <strong>{state.player.name}</strong>
-            <small>{state.player.isGuest ? t('status.visitor') : t('status.saved')}</small>
-          </span>
+          {career ? <>
+            <ClubWordmark clubId={career.player.currentClubId} compact />
+            <OverallBadge overall={career.player.overall} compact />
+            <span className="header-context__player"><strong>{career.player.name}</strong><small>{SAVE_LABELS[state.saveStatus]}</small></span>
+          </> : <Link className="header-create" to="/create"><Plus /> 新建球员</Link>}
         </div>
       </header>
-
       {children}
-
-      <ResponsiveDrawer open={databaseOpen} title="足球百科" onClose={closeDatabase}>
-        <EncyclopediaPanel />
-      </ResponsiveDrawer>
+      <MobileTabbar />
       <ToastRegion />
     </div>
   )

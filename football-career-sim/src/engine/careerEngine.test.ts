@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import type { CreateCareerInput, SimCareer } from './careerTypes'
-import { advanceCareerSeason, autoplayCareer, createCareer, resolveCareerEvent } from './careerEngine'
+import { advanceCareerSeason, autoplayCareer, createCareer, expireCareerEvent, resolveCareerEvent, SUPPORTED_CHOICE_EFFECT_KEYS } from './careerEngine'
+import { eventTemplates, getEventTemplate } from '../data/world/worldData'
 
 const input: CreateCareerInput = {
   seed: 'zhou-journey-01',
@@ -50,11 +51,20 @@ describe('career engine', () => {
     expect(result.notices[0].title).toContain('关键决定')
   })
 
+  it('records a timed non-decision and lets the career continue', () => {
+    const career = createCareer(input)
+    const event = career.pendingEvents[0]
+    const expired = expireCareerEvent(career, event.instanceId)
+    expect(expired.career.pendingEvents).not.toContainEqual(event)
+    expect(expired.career.resolvedEventInstanceIds).toContain(event.instanceId)
+    expect(expired.career.timeline.at(-1)?.detail).toContain('没有行动')
+  })
+
   it('plays a deterministic full life through retirement', () => {
     const first = autoplayCareer(createCareer(input), firstChoice)
     const second = autoplayCareer(createCareer(input), firstChoice)
     const decisions = first.timeline.filter((entry) => entry.type === 'decision')
-    const keyMatches = decisions.filter((entry) => ['debut-last-ten', 'title-decider'].includes(entry.sourceEventId ?? ''))
+    const keyMatches = decisions.filter((entry) => getEventTemplate(entry.sourceEventId ?? '')?.kind === 'match')
 
     expect(first).toEqual(second)
     expect(first.status).toBe('retired')
@@ -71,5 +81,9 @@ describe('career engine', () => {
     expect(first.unlockedAchievementIds.length).toBeGreaterThan(0)
     expect(first.clubHistory.length).toBeGreaterThan(1)
   })
-})
 
+  it('implements every effect key used by the career content library', () => {
+    const contentKeys = new Set(eventTemplates.flatMap((event) => event.choices.flatMap((choice) => Object.keys(choice.effects))))
+    expect([...contentKeys].filter((key) => !SUPPORTED_CHOICE_EFFECT_KEYS.has(key))).toEqual([])
+  })
+})

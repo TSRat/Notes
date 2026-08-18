@@ -57,11 +57,11 @@ export function createCareerEnding(career: SimCareer): CareerEnding {
     + dimensions.clubLegacy * 0.2
     + dimensions.nationalLegacy * 0.12
     + dimensions.life * 0.22
-  const isGoodEnding = fulfilmentScore >= 75.5
-    || dimensions.sporting >= 90
-    || dimensions.clubLegacy >= 90
-    || dimensions.nationalLegacy >= 90
-    || dimensions.life >= 90
+  const isGoodEnding = fulfilmentScore >= 78
+    || dimensions.sporting >= 92
+    || dimensions.clubLegacy >= 92
+    || dimensions.nationalLegacy >= 92
+    || dimensions.life >= 92
   const clubCount = new Set(career.clubHistory.map((entry) => entry.clubId)).size
   const biography = `${career.player.name}在 ${career.player.age} 岁结束职业生涯，最高 OVR ${career.player.peakOverall}，代表 ${clubCount} 家俱乐部出场，并留下 ${career.player.nationalTeam.caps} 次国家队经历。`
 

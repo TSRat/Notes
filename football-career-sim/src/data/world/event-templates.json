@@ -79,5 +79,110 @@
     { "id": "return-home", "label": "回到职业起点结束生涯", "riskTag": "竞技级别下降", "effects": { "belonging": 5, "visibility": -2 } },
     { "id": "new-league", "label": "去新的联赛继续踢球", "riskTag": "身体与适应", "effects": { "minutes": 3, "adaptation": -2, "legacy": 2 } },
     { "id": "retire", "label": "按自己的时间退役", "riskTag": "竞技生涯结束", "effects": { "wellbeing": 3, "retire": 1 } }
+  ] },
+  { "id": "school-balance", "stage": "academy", "kind": "life", "title": "训练安排撞上毕业考试", "summary": "俱乐部给了额外训练名额，学校也只允许你缺席一次。", "timedSeconds": null, "ageRange": [16, 18], "choices": [
+    { "id": "exam-first", "label": "完成考试，再接受个人加练", "riskTag": "训练时间减少", "effects": { "wellbeing": 2, "development": 1 } },
+    { "id": "football-first", "label": "跟随一线队训练", "riskTag": "生活压力", "effects": { "development": 3, "pressure": 2 } },
+    { "id": "ask-plan", "label": "要求俱乐部与学校共同制定计划", "riskTag": "需要沟通", "effects": { "trust": 2, "wellbeing": 1 } }
+  ] },
+  { "id": "academy-commute", "stage": "academy", "kind": "life", "title": "每天往返四小时", "summary": "更好的训练基地意味着更长通勤，你的睡眠和家庭节奏开始被影响。", "timedSeconds": null, "ageRange": [16, 19], "choices": [
+    { "id": "move-dorm", "label": "搬进青训宿舍", "riskTag": "离开家庭", "effects": { "development": 2, "wellbeing": -2, "adaptation": 2 } },
+    { "id": "keep-commute", "label": "继续通勤，保持家庭支持", "riskTag": "疲劳增加", "effects": { "wellbeing": 2, "fatigue": 3 } },
+    { "id": "reduce-sessions", "label": "减少一次加练换取恢复", "riskTag": "成长稍慢", "effects": { "health": 2, "development": -1 } }
+  ] },
+  { "id": "academy-captain", "stage": "academy", "kind": "football", "title": "青年队把袖标递给你", "summary": "队内有更有天赋的球员，但教练认为你更能维持比赛结构。", "timedSeconds": null, "ageRange": [16, 19], "choices": [
+    { "id": "accept-voice", "label": "接受并主动承担沟通", "riskTag": "责任增加", "effects": { "leadership": 3, "pressure": 2 } },
+    { "id": "lead-by-play", "label": "接受袖标，但以比赛表现为主", "riskTag": "沟通有限", "effects": { "trust": 2, "form": 1 } },
+    { "id": "decline-focus", "label": "暂时拒绝，专注个人发展", "riskTag": "领导机会减少", "effects": { "development": 2, "leadership": -1 } }
+  ] },
+  { "id": "agent-family-meeting", "stage": "academy", "kind": "contract", "title": "第一位经纪人来到家里", "summary": "他承诺更大的平台，但代表期限、费用和利益冲突仍需要逐条确认。", "timedSeconds": null, "ageRange": [16, 19], "choices": [
+    { "id": "independent-review", "label": "先找独立人士审查协议", "riskTag": "进度放慢", "effects": { "security": 2, "trust": 1 } },
+    { "id": "sign-early", "label": "尽快签约争取资源", "riskTag": "长期约束", "effects": { "visibility": 3, "security": -1 } },
+    { "id": "family-only", "label": "暂时由家人处理沟通", "riskTag": "专业资源有限", "effects": { "wellbeing": 2, "visibility": -1 } }
+  ] },
+  { "id": "video-analysis-gap", "stage": "breakthrough", "kind": "football", "title": "录像里反复出现同一个空当", "summary": "你的进攻选择有效，但丢球后的回位正在伤害球队结构。", "timedSeconds": null, "ageRange": [17, 24], "choices": [
+    { "id": "rebuild-habits", "label": "重做无球习惯和观察顺序", "riskTag": "短期进攻下降", "effects": { "fit": 3, "decisions": 2, "form": -1 } },
+    { "id": "keep-instinct", "label": "保留冒险方式，用产出证明价值", "riskTag": "战术信任", "effects": { "form": 2, "trust": -2 } },
+    { "id": "ask-role-cover", "label": "与教练设计队友保护机制", "riskTag": "依赖体系", "effects": { "fit": 2, "trust": 2 } }
+  ] },
+  { "id": "loan-language", "stage": "breakthrough", "kind": "life", "title": "外租更衣室听不懂你的语言", "summary": "比赛机会真实存在，但训练口令、城市生活和队友关系都需要重新建立。", "timedSeconds": null, "ageRange": [18, 24], "choices": [
+    { "id": "learn-fast", "label": "把语言课列入每日训练", "riskTag": "恢复时间减少", "effects": { "adaptation": 4, "fatigue": 2 } },
+    { "id": "football-language", "label": "先用场上行动建立信任", "riskTag": "误解仍可能发生", "effects": { "form": 2, "adaptation": 1 } },
+    { "id": "support-network", "label": "要求母队提供生活支持", "riskTag": "被视为依赖", "effects": { "wellbeing": 3, "trust": -1 } }
+  ] },
+  { "id": "social-media-clip", "stage": "breakthrough", "kind": "media", "title": "一次失误被剪成热门片段", "summary": "视频没有呈现整场表现，但公众叙事已经开始形成。", "timedSeconds": null, "ageRange": [17, 27], "choices": [
+    { "id": "ignore-train", "label": "不回应，回到训练场", "riskTag": "叙事不会立刻消失", "effects": { "wellbeing": 1, "reputation": -1, "trust": 1 } },
+    { "id": "own-mistake", "label": "承认失误并解释下一步", "riskTag": "继续被讨论", "effects": { "reputation": 2, "leadership": 1 } },
+    { "id": "fight-back", "label": "公开反击片段断章取义", "riskTag": "争议扩大", "effects": { "reputation": 3, "pressure": 3 } }
+  ] },
+  { "id": "first-derby-start", "stage": "breakthrough", "kind": "match", "title": "第一次德比首发", "summary": "看台噪声盖过了教练口令，对手正在诱使你失去位置纪律。", "timedSeconds": 9, "ageRange": [18, 25], "choices": [
+    { "id": "stay-task", "label": "只执行赛前职责", "riskTag": "稳健", "effects": { "trust": 3, "matchControl": 2 } },
+    { "id": "answer-duel", "label": "正面回应每一次对抗", "riskTag": "犯规与体能", "effects": { "matchImpact": 3, "fatigue": 3 } },
+    { "id": "slow-rhythm", "label": "用控球让比赛降温", "riskTag": "可能错过快攻", "effects": { "decisions": 2, "matchControl": 3 } }
+  ] },
+  { "id": "release-clause-renewal", "stage": "established", "kind": "contract", "title": "续约里的解约条款", "summary": "更高薪资、更长合同和未来转会自由无法同时最大化。", "timedSeconds": null, "ageRange": [21, 30], "choices": [
+    { "id": "high-clause", "label": "接受高条款与长期保障", "riskTag": "未来流动受限", "effects": { "security": 4, "mobility": -3 } },
+    { "id": "lower-clause", "label": "降低当前待遇换取更低条款", "riskTag": "短期收入减少", "effects": { "security": -2, "mobility": 4 } },
+    { "id": "role-bonus", "label": "把重点放在出场与表现奖金", "riskTag": "收入随表现波动", "effects": { "trust": 2, "pressure": 2 } }
+  ] },
+  { "id": "continental-travel", "stage": "established", "kind": "football", "title": "三线赛程开始吞噬恢复", "summary": "联赛、杯赛和洲际旅行连续叠加，训练质量与出勤稳定无法全部保住。", "timedSeconds": null, "ageRange": [21, 31], "choices": [
+    { "id": "protect-recovery", "label": "减少额外训练保护恢复", "riskTag": "成长放缓", "effects": { "health": 3, "development": -1 } },
+    { "id": "play-everything", "label": "争取参加每一场重要比赛", "riskTag": "疲劳与伤病", "effects": { "visibility": 3, "fatigue": 4, "injuryRisk": 2 } },
+    { "id": "rotate-smart", "label": "与教练共同安排轮换窗口", "riskTag": "部分比赛缺席", "effects": { "trust": 2, "health": 2 } }
+  ] },
+  { "id": "derby-provocation", "stage": "established", "kind": "match", "title": "对手在德比里不断挑衅", "summary": "你已经吃到黄牌，下一次对抗可能改变比赛，也可能让球队少一人。", "timedSeconds": 8, "ageRange": [20, 32], "choices": [
+    { "id": "walk-away", "label": "退出口角，继续封锁路线", "riskTag": "稳健", "effects": { "trust": 2, "matchControl": 2 } },
+    { "id": "physical-answer", "label": "用下一次合法对抗回应", "riskTag": "判罚边缘", "effects": { "matchImpact": 3, "pressure": 2 } },
+    { "id": "ask-switch", "label": "与队友换位避开冲突", "riskTag": "临场适配", "effects": { "decisions": 2, "fit": 1 } }
+  ] },
+  { "id": "captain-injury-cover", "stage": "established", "kind": "club", "title": "队长伤停，袖标暂时空缺", "summary": "更衣室尊重资历，教练却希望你承担场上沟通。", "timedSeconds": null, "ageRange": [22, 32], "choices": [
+    { "id": "take-armband", "label": "接受临时队长职责", "riskTag": "压力上升", "effects": { "leadership": 4, "pressure": 3 } },
+    { "id": "share-leadership", "label": "与资深队友共同承担", "riskTag": "权责不清", "effects": { "leadership": 2, "belonging": 2 } },
+    { "id": "focus-performance", "label": "拒绝袖标，专注比赛", "riskTag": "错过领导机会", "effects": { "form": 2, "leadership": -1 } }
+  ] },
+  { "id": "tactical-reinvention", "stage": "prime", "kind": "football", "title": "对手已经学会限制你的招牌动作", "summary": "数据仍然不错，但连续几支球队都在用同一种方式切断你的优势。", "timedSeconds": null, "ageRange": [24, 32], "choices": [
+    { "id": "new-role", "label": "用一个赛季重建第二角色", "riskTag": "短期产出下降", "effects": { "versatility": 4, "form": -2 } },
+    { "id": "deepen-specialty", "label": "继续强化最难防的细节", "riskTag": "适用场景收窄", "effects": { "specialism": 3, "fit": -1 } },
+    { "id": "study-opponents", "label": "把录像分析加入个人训练", "riskTag": "精神负荷", "effects": { "decisions": 3, "fatigue": 1 } }
+  ] },
+  { "id": "captain-vote", "stage": "prime", "kind": "club", "title": "更衣室要选新的队长组", "summary": "公开争取可能改变你的地位，保持沉默也会被解读。", "timedSeconds": null, "ageRange": [25, 33], "choices": [
+    { "id": "stand", "label": "明确愿意承担队长职责", "riskTag": "关系与期待", "effects": { "leadership": 4, "pressure": 3 } },
+    { "id": "support-other", "label": "支持更资深的队友", "riskTag": "个人地位不变", "effects": { "belonging": 3, "leadership": 1 } },
+    { "id": "private-lead", "label": "不参选，但继续在场上组织", "riskTag": "贡献不显眼", "effects": { "trust": 2, "leadership": 2 } }
+  ] },
+  { "id": "commercial-tour", "stage": "prime", "kind": "life", "title": "商业行程挤进季前备战", "summary": "俱乐部需要你参加全球活动，体能团队担心旅行压缩训练。", "timedSeconds": null, "ageRange": [24, 33], "choices": [
+    { "id": "full-tour", "label": "完成全部商业行程", "riskTag": "疲劳增加", "effects": { "reputation": 4, "fatigue": 3, "security": 2 } },
+    { "id": "football-first", "label": "只参加必要活动", "riskTag": "商业关系受影响", "effects": { "form": 2, "reputation": -1 } },
+    { "id": "community-event", "label": "把时间留给本地社区活动", "riskTag": "全球曝光较少", "effects": { "belonging": 4, "reputation": 1 } }
+  ] },
+  { "id": "surgery-window", "stage": "turning-point", "kind": "medical", "title": "手术窗口与淘汰赛重叠", "summary": "医生建议尽快处理慢性问题，球队却刚进入赛季最重要阶段。", "timedSeconds": null, "ageRange": [28, 35], "choices": [
+    { "id": "operate-now", "label": "立即手术保护长期身体", "riskTag": "错过关键比赛", "effects": { "health": 5, "visibility": -2 } },
+    { "id": "manage-pain", "label": "保守治疗坚持到赛季结束", "riskTag": "伤情恶化", "effects": { "matchImpact": 2, "injuryRisk": 5 } },
+    { "id": "limited-minutes", "label": "只参加最关键的比赛", "riskTag": "状态不连续", "effects": { "health": 2, "form": -1, "trust": 1 } }
+  ] },
+  { "id": "family-school-year", "stage": "turning-point", "kind": "life", "title": "转会窗口撞上孩子的新学年", "summary": "新城市提供更好的竞技角色，但家庭刚建立稳定生活。", "timedSeconds": null, "ageRange": [28, 36], "choices": [
+    { "id": "stay-family", "label": "留下完成当前生活周期", "riskTag": "竞技机会缩小", "effects": { "wellbeing": 4, "mobility": -2 } },
+    { "id": "move-plan", "label": "全家搬迁并提前安排支持", "riskTag": "适应成本", "effects": { "adaptation": 2, "security": -1 } },
+    { "id": "commute-season", "label": "先独自效力一个赛季", "riskTag": "关系与恢复压力", "effects": { "visibility": 2, "wellbeing": -3, "fatigue": 2 } }
+  ] },
+  { "id": "bench-leadership", "stage": "turning-point", "kind": "club", "title": "你第一次连续坐在替补席", "summary": "身体仍能比赛，但球队的时间线正在转向更年轻的球员。", "timedSeconds": null, "ageRange": [29, 36], "choices": [
+    { "id": "support-team", "label": "在替补席继续组织和提醒", "riskTag": "个人出场减少", "effects": { "leadership": 4, "minutes": -2 } },
+    { "id": "fight-place", "label": "加练争回首发位置", "riskTag": "负荷上升", "effects": { "form": 2, "fatigue": 3 } },
+    { "id": "seek-role", "label": "寻找承诺核心角色的球队", "riskTag": "离开熟悉环境", "effects": { "mobility": 3, "belonging": -2 } }
+  ] },
+  { "id": "farewell-start", "stage": "legacy", "kind": "match", "title": "主场可能是最后一次首发", "summary": "队友希望把点球和队长袖标都交给你，但比赛仍有真实竞争压力。", "timedSeconds": 12, "ageRange": [33, 39], "choices": [
+    { "id": "team-plan", "label": "拒绝特殊安排，按比赛计划踢", "riskTag": "告别感较弱", "effects": { "trust": 3, "leadership": 2 } },
+    { "id": "take-moment", "label": "接受袖标并承担关键球", "riskTag": "聚光灯与失误", "effects": { "matchImpact": 4, "pressure": 3 } },
+    { "id": "share-youth", "label": "把点球留给年轻队友", "riskTag": "个人时刻减少", "effects": { "legacy": 4, "belonging": 2 } }
+  ] },
+  { "id": "coaching-badges", "stage": "legacy", "kind": "life", "title": "俱乐部邀请你开始教练课程", "summary": "学习会占用恢复与家庭时间，但第二职业不必等到退役才开始。", "timedSeconds": null, "ageRange": [31, 39], "choices": [
+    { "id": "start-course", "label": "现在开始教练课程", "riskTag": "时间负荷", "effects": { "leadership": 4, "fatigue": 2 } },
+    { "id": "mentor-only", "label": "先专注更衣室导师角色", "riskTag": "证书进度延后", "effects": { "legacy": 3, "belonging": 2 } },
+    { "id": "football-only", "label": "退役前只做球员", "riskTag": "转型准备较少", "effects": { "form": 2, "leadership": -1 } }
+  ] },
+  { "id": "national-farewell", "stage": "legacy", "kind": "national-team", "title": "国家队询问你的最后一个窗口", "summary": "年轻球员需要比赛，你也仍有机会完成一次正式告别。", "timedSeconds": null, "ageRange": [32, 39], "choices": [
+    { "id": "farewell-window", "label": "接受征召并明确这是告别", "riskTag": "赛程负荷", "effects": { "legacy": 4, "fatigue": 2 } },
+    { "id": "stay-available", "label": "继续保持开放，不预设终点", "riskTag": "角色不确定", "effects": { "nationalOpportunity": 2, "pressure": 1 } },
+    { "id": "step-aside", "label": "主动让出名单位置", "riskTag": "国家队生涯结束", "effects": { "leadership": 3, "wellbeing": 2 } }
   ] }
 ]

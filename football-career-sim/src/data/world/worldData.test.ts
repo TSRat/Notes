@@ -73,6 +73,7 @@ describe('real-world content contracts', () => {
   })
 
   it('keeps choices playable and reserves real-time pressure for urgent scenes', () => {
+    expect(eventTemplates.length).toBeGreaterThanOrEqual(36)
     const stages = new Set(eventTemplates.map((event) => event.stage))
     expect(stages).toEqual(new Set(['academy', 'breakthrough', 'established', 'prime', 'turning-point', 'legacy']))
 

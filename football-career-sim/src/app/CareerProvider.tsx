@@ -134,8 +134,24 @@ export function CareerProvider({ children }: { children: ReactNode }) {
     return state.career ? repository.exportJson(state.career) : null
   }, [repository, state.career])
 
+  const listCareers = useCallback(() => repository.list(), [repository])
+
+  const loadCareer = useCallback(async (id: string) => {
+    try {
+      const career = await repository.load(id)
+      if (!career) throw new Error('找不到这份职业档案。')
+      lastSavedSnapshot.current = JSON.stringify(career)
+      window.localStorage.setItem(LAST_SAVE_POINTER_KEY, career.id)
+      dispatch({ type: 'hydrate', payload: { career } })
+      return true
+    } catch (error) {
+      dispatch({ type: 'import-failed', payload: error instanceof Error ? error.message : '档案无法读取。' })
+      return false
+    }
+  }, [repository])
+
   return (
-    <CareerContext.Provider value={{ state, dispatch, importCareer, exportCareer }}>
+    <CareerContext.Provider value={{ state, dispatch, importCareer, exportCareer, listCareers, loadCareer }}>
       {children}
     </CareerContext.Provider>
   )

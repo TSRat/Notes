@@ -42,6 +42,38 @@ const ATTRIBUTE_KEYS: AttributeKey[] = [
   'goalkeeping',
 ]
 
+export const SUPPORTED_CHOICE_EFFECT_KEYS = new Set([
+  'adaptation',
+  'belonging',
+  'careerAmbition',
+  'decisions',
+  'defensiveRisk',
+  'development',
+  'fatigue',
+  'fit',
+  'form',
+  'health',
+  'injuryRisk',
+  'leadership',
+  'legacy',
+  'matchControl',
+  'matchImpact',
+  'minutes',
+  'mobility',
+  'nationalOpportunity',
+  'pace',
+  'pressure',
+  'reputation',
+  'retire',
+  'security',
+  'specialism',
+  'training',
+  'trust',
+  'versatility',
+  'visibility',
+  'wellbeing',
+])
+
 const POSITION_BOOSTS: Record<PlayerPosition, Partial<Record<AttributeKey, number>>> = {
   GK: { goalkeeping: 26, anticipation: 12, composure: 10, decisions: 9, aerial: 7, longPassing: 5 },
   RB: { pace: 14, acceleration: 13, stamina: 14, tackling: 10, marking: 8, shortPassing: 7 },
@@ -136,7 +168,7 @@ function nextPotential(trait: CareerTrait, state: RandomState) {
     return { potential: generational.value, state: generational.state }
   }
   const roll = randomInt(rareRoll.state, 72, 77)
-  const bonus = trait === 'gifted' ? 6 : trait === 'late-bloomer' ? 3 : 0
+  const bonus = trait === 'gifted' ? 5 : trait === 'late-bloomer' ? 3 : 0
   return { potential: clampRating(roll.value + bonus), state: roll.state }
 }
 
@@ -239,6 +271,15 @@ function applyMetric(metrics: CareerMetrics, key: string, amount: number) {
     injuryRisk: 'injuryRisk',
     health: 'fitness',
     form: 'form',
+    minutes: 'coachTrust',
+    visibility: 'reputation',
+    mobility: 'adaptability',
+    careerAmbition: 'reputation',
+    nationalOpportunity: 'reputation',
+    matchImpact: 'form',
+    defensiveRisk: 'pressure',
+    matchControl: 'tacticalFit',
+    legacy: 'leadership',
   }
   const target = mapping[key]
   if (!target) return metrics
@@ -326,6 +367,16 @@ function applyEventSpecificConsequences(career: SimCareer, templateId: string, c
   if (templateId === 'relegation-choice' && choiceId === 'stay-promotion') flags.stayedAfterRelegation = true
   if (templateId === 'debut-last-ten' && outcome === 'breakthrough') flags.subChangedCareer = true
   if (templateId === 'final-contract' && choiceId === 'retire') flags.retirementChosen = true
+  if (templateId === 'farewell-start' && outcome !== 'setback') flags.farewellStart = true
+  if (templateId === 'captain-injury-cover' && choiceId === 'take-armband') flags.captainInCrisis = true
+  if (templateId === 'video-analysis-gap' && choiceId === 'rebuild-habits' && outcome !== 'setback') flags.recoveredFromError = true
+  if (templateId === 'tactical-reinvention' && choiceId === 'new-role' && outcome !== 'setback') flags.structurePlayer = true
+  if (['first-derby-start', 'derby-provocation'].includes(templateId) && outcome === 'breakthrough') {
+    flags.rivalryImpact = Number(flags.rivalryImpact ?? 0) + 1
+  }
+  if (templateId === 'release-clause-renewal' && choiceId === 'lower-clause') {
+    flags.independentTransfers = Number(flags.independentTransfers ?? 0) + 1
+  }
 
   return { ...next, flags }
 }
@@ -369,6 +420,43 @@ export function resolveCareerEvent(career: SimCareer, instanceId: string, choice
   return {
     career: next,
     notices: [{ title: outcomeMeta.title, detail: `已记录：${choice.label}。后续影响可能在未来赛季出现。`, tone: outcomeMeta.tone }],
+  }
+}
+
+export function expireCareerEvent(career: SimCareer, instanceId: string): CareerUpdate {
+  if (career.status !== 'active') return { career, notices: [] }
+  const event = career.pendingEvents.find((candidate) => candidate.instanceId === instanceId)
+  if (!event || career.resolvedEventInstanceIds.includes(instanceId)) return { career, notices: [] }
+  const player: CareerPlayer = {
+    ...career.player,
+    metrics: {
+      ...career.player.metrics,
+      coachTrust: clamp(career.player.metrics.coachTrust - 2),
+      form: clamp(career.player.metrics.form - 1),
+      pressure: clamp(career.player.metrics.pressure + 2),
+    },
+  }
+  const next: SimCareer = {
+    ...career,
+    player,
+    pendingEvents: career.pendingEvents.filter((candidate) => candidate.instanceId !== instanceId),
+    eventOccurrences: { ...career.eventOccurrences, [event.templateId]: (career.eventOccurrences[event.templateId] ?? 0) + 1 },
+    resolvedEventInstanceIds: [...career.resolvedEventInstanceIds, instanceId],
+    timeline: [...career.timeline, {
+      id: `timeout-${instanceId}`,
+      seasonYear: career.seasonYear,
+      age: career.player.age,
+      type: 'decision',
+      title: event.title,
+      detail: '决定窗口关闭前你没有行动，比赛或事件按当时的惯性继续发展。',
+      clubId: career.player.currentClubId,
+      tone: 'difficult',
+      sourceEventId: event.templateId,
+    }],
+  }
+  return {
+    career: next,
+    notices: [{ title: '决定窗口已经关闭', detail: '未行动本身也成为了职业记录；精确后果将在之后显现。', tone: 'difficult' }],
   }
 }
 

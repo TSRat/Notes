@@ -1,147 +1,83 @@
-import { ArrowUpRight, CalendarDays, CircleGauge, Radio, Swords } from 'lucide-react'
-import { useEffect, useState } from 'react'
-import { Link, useSearchParams } from 'react-router-dom'
+import { ArrowRight, CalendarCheck, ChevronRight, CircleEllipsis, Radio, Trophy } from 'lucide-react'
+import { Link, Navigate } from 'react-router-dom'
 import { useCareer } from '../app/CareerContext'
-import { trackEvent } from '../app/analytics'
-import type { Choice } from '../app/types'
-import { getClub, newsEvents } from '../data/db'
 import { AppShell } from '../components/AppShell'
-import { CareerJourneyMap } from '../components/CareerJourneyMap'
-import { ClubMark } from '../components/ClubMark'
+import { CareerStatusBar } from '../components/CareerStatusBar'
+import { CareerTimeline } from '../components/CareerTimeline'
+import { ClubWordmark } from '../components/ClubWordmark'
 import { DecisionPanel } from '../components/DecisionPanel'
-import { EncyclopediaPanel } from '../components/EncyclopediaPanel'
-import { ExperienceContext } from '../components/ExperienceContext'
-import { HexagonStatsChart } from '../components/HexagonStatsChart'
-import { MobileTabbar, type MobileTab } from '../components/MobileTabbar'
-import { NewsFeedList } from '../components/NewsFeedList'
-import { PanelHeader } from '../components/PanelHeader'
-import { TermLink } from '../components/TermLink'
+import { SeasonLedger } from '../components/SeasonLedger'
+import { getEventTemplate, getWorldClub } from '../data/world/worldData'
+import { advanceCareerSeason, expireCareerEvent, resolveCareerEvent } from '../engine/careerEngine'
 
 export function CareerPage() {
   const { state, dispatch } = useCareer()
-  const [searchParams] = useSearchParams()
-  const [mobileTab, setMobileTab] = useState<MobileTab>('career')
-  const club = getClub(state.player.currentClubId)
-  const urgentEvent = newsEvents.find((event) => event.type === 'urgent') ?? newsEvents[0]
-  const resolved = state.player.completedChoices.includes(urgentEvent.id)
+  if (state.lifecycle === 'loading') return <div className="loading-screen"><span>91</span><p>正在读取职业档案…</p></div>
+  if (!state.career) return <Navigate to="/create" replace />
+  const career = state.career
+  const currentEvent = career.pendingEvents[0]
+  const currentTemplate = currentEvent ? getEventTemplate(currentEvent.templateId) : undefined
+  const club = getWorldClub(career.player.currentClubId)
 
-  useEffect(() => {
-    if (searchParams.get('focus') === urgentEvent.id) setMobileTab('career')
-    const experienceId = searchParams.get('experience')
-    if (experienceId) {
-      setMobileTab('career')
-      window.setTimeout(() => document.getElementById(`experience-${experienceId}`)?.scrollIntoView({ block: 'center' }), 50)
-    }
-  }, [searchParams, urgentEvent.id])
+  const choose = (choiceId: string) => {
+    if (!currentEvent) return
+    const update = resolveCareerEvent(career, currentEvent.instanceId, choiceId)
+    dispatch({ type: 'replace-career', payload: update })
+  }
 
-  const choose = (choice: Choice) => {
-    const previousClubId = state.player.currentClubId
-    dispatch({ type: 'apply-choice', payload: { eventId: urgentEvent.id, choice } })
-    trackEvent('key_choice_made', {
-      eventId: urgentEvent.id,
-      choiceId: choice.id,
-      careerWeek: state.player.careerWeek,
-    })
-    if (choice.effects.currentClubId && choice.effects.currentClubId !== previousClubId) {
-      trackEvent('club_changed', {
-        fromClubId: previousClubId,
-        toClubId: choice.effects.currentClubId,
-        reasonEventId: urgentEvent.id,
-      })
-    }
+  const advance = () => {
+    const update = advanceCareerSeason(career)
+    dispatch({ type: 'replace-career', payload: update })
+  }
+
+  const expire = () => {
+    if (!currentEvent) return
+    const update = expireCareerEvent(career, currentEvent.instanceId)
+    dispatch({ type: 'replace-career', payload: update })
   }
 
   return (
-    <AppShell pageLabel="CAREER HUB / WEEK 01">
-      <main id="main-content" className="career-shell">
-        {state.player.isGuest ? (
-          <div className="guest-banner" role="status">
-            <span>访客体验档</span>
-            当前使用示例球员周野。你的选择仍然可以完整体验，但刷新后不会保存。
-            <Link to="/">创建自己的档案</Link>
-          </div>
-        ) : null}
+    <AppShell pageLabel="CAREER / LIVE FILE">
+      <main id="main-content" className="career-page">
+        <CareerStatusBar career={career} />
+        <header className="career-masthead">
+          <div><p className="eyebrow">{career.status === 'retired' ? 'CAREER COMPLETE' : `SEASON ${String(career.seasonIndex + 1).padStart(2, '0')} · ${career.stage.toUpperCase()}`}</p><h1>{career.status === 'retired' ? career.ending?.title : `${career.player.name} 的职业时间线`}</h1><p>{career.status === 'retired' ? career.ending?.biography : `你在 ${club?.city} 的每一个关键选择都会留下记录。普通比赛由系统推进，真正改变道路的时刻由你处理。`}</p></div>
+          <ClubWordmark clubId={career.player.currentClubId} />
+        </header>
 
-        <div className="three-pane-layout" data-mobile-active={mobileTab}>
-          <section className="career-center pane pane--center" aria-label="球员与当前决定">
-            <PanelHeader
-              notebook="NOTEBOOK 02"
-              title="球员与俱乐部"
-              meta={`赛季 ${state.player.season} · 第 ${String(state.player.careerWeek).padStart(2, '0')} 周`}
-              action={<span className="live-indicator"><i /> LIVE FILE</span>}
-            />
-
-            <div className="career-hero">
-              <div>
-                <p className="eyebrow">CURRENT ASSIGNMENT</p>
-                <h1>{state.player.name}</h1>
-                <p>{state.player.position} · {state.player.playStyle}</p>
-              </div>
-              <ClubMark clubId={club.id} />
-            </div>
-
-            <div className="player-overview">
-              <HexagonStatsChart player={state.player} />
-              <dl className="career-facts">
-                <div><dt><CalendarDays aria-hidden="true" size={16} /> 下一场</dt><dd>今晚 19:30</dd></div>
-                <div><dt><Swords aria-hidden="true" size={16} /> 对手</dt><dd>铁谷青年队</dd></div>
-                <div><dt><CircleGauge aria-hidden="true" size={16} /> 战术</dt><dd>{club.tacticsStyle}</dd></div>
-              </dl>
-            </div>
-
-            <div className="club-context-grid" aria-label="当前俱乐部职业环境">
-              <div><span>青训路径</span><strong>{club.academyPathway}</strong></div>
-              <div><span>招募模型</span><strong>{club.recruitmentProfile}</strong></div>
-              <div><span>医疗与负荷</span><strong>{club.medicalModel}</strong></div>
-              <div><span>社区身份</span><strong>{club.communityIdentity}</strong></div>
-            </div>
-
-            <ExperienceContext experienceId={urgentEvent.experienceId ?? 'first-contract'} />
-
-            {!resolved ? (
-              <DecisionPanel
-                eventId={urgentEvent.id}
-                eyebrow="AGENT WINDOW · URGENT"
-                title={urgentEvent.headline}
-                prompt={urgentEvent.content}
-                choices={urgentEvent.choices}
-                resolved={resolved}
-                onChoose={choose}
-              />
+        <div className="career-workspace">
+          <section className="career-primary" aria-label="当前关键时刻">
+            {career.status === 'retired' ? (
+              <article className="retirement-callout"><Trophy /><p className="eyebrow">THE FILE IS CLOSED</p><h2>{career.ending?.title}</h2><p>{career.ending?.biography}</p><Link className="primary-button" to="/museum">进入生涯博物馆 <ArrowRight /></Link></article>
+            ) : currentEvent ? (
+              currentTemplate?.kind === 'match' ? (
+                <article className="match-callout">
+                  <div className="match-callout__signal"><Radio /><span>模拟比赛 · 关键转播</span></div>
+                  <p className="eyebrow">MATCHDAY DECISION</p><h2>{currentEvent.title}</h2><p>{currentEvent.summary}</p>
+                  <div className="match-callout__facts"><span>决定窗口 {currentEvent.timedSeconds ?? 10} 秒</span><span>外部消息将静音</span><span>比赛结果仍不确定</span></div>
+                  <Link className="primary-button" to={`/match/${currentEvent.instanceId}`}>进入比赛日 <ChevronRight /></Link>
+                </article>
+              ) : <DecisionPanel event={currentEvent} onChoose={choose} onExpire={expire} />
             ) : (
-              <section className="resolved-card">
-                <span className="eyebrow">DECISION LOGGED</span>
-                <h2>合同窗口已经关闭</h2>
-                <p>你的选择已写入职业档案。俱乐部主题、属性与后续报道会以当前结果为准。</p>
-                {state.player.currentClubId === 'red-forge' ? <p>红炉联注册将在今晚北港资格赛后生效；这会是你身穿旧队颜色的告别战。</p> : null}
-                <p>赛前重点：进入右侧<TermLink termId="half-space">半空间</TermLink>后，先观察套边队友，再决定转身方向。</p>
-              </section>
+              <article className="season-ready">
+                <CalendarCheck /><p className="eyebrow">ALL KEY MOMENTS RESOLVED</p><h2>{career.seasonYear}/{String(career.seasonYear + 1).slice(-2)} 赛季可以结算</h2><p>系统会模拟普通比赛、出场、状态与俱乐部成绩。事实会写入赛季账本，新的关键时刻随后出现。</p><button className="primary-button" type="button" onClick={advance}>推进一个赛季 <ArrowRight /></button>
+              </article>
             )}
 
-            <Link className="match-card" to="/match/final-qualifier">
-              <span className="match-card__signal"><Radio aria-hidden="true" size={18} /> MATCHDAY 19:30</span>
-              <span>
-                <strong>北港竞技 <b>VS</b> 铁谷青年队</strong>
-                <small>全国发展联赛 · 晋级资格赛</small>
-              </span>
-              <ArrowUpRight aria-hidden="true" />
-            </Link>
+            {career.transferOffers.length > 0 && currentTemplate && ['transfer', 'contract'].includes(currentTemplate.kind) ? (
+              <section className="market-board"><header><div><p className="eyebrow">KNOWN MARKET FACTS</p><h2>经纪人带来的真实环境信息</h2></div><span>{career.transferOffers.length} 份可能路径</span></header><div>{career.transferOffers.map((offer) => <article key={offer.clubId}><ClubWordmark clubId={offer.clubId} /><dl><div><dt>预计角色</dt><dd>{offer.role}</dd></div><div><dt>战术适配</dt><dd>{offer.fit}/100</dd></div><div><dt>合同</dt><dd>{offer.contractYears} 年</dd></div></dl><ul>{offer.knownFacts.map((fact) => <li key={fact}>{fact}</li>)}</ul></article>)}</div></section>
+            ) : null}
 
-            <CareerJourneyMap />
+            <section className="timeline-section"><header><div><p className="eyebrow">CHRONOLOGICAL CAREER FILE</p><h2>已经发生的事</h2></div><span>{career.timeline.length} 条记录</span></header><CareerTimeline entries={career.timeline} limit={12} /></section>
           </section>
 
-          <aside className="pane pane--news" aria-label="舆情与消息">
-            <PanelHeader notebook="NOTEBOOK 01" title="舆情与消息" meta="今天 · 3 条更新" />
-            <NewsFeedList events={newsEvents} activeId={urgentEvent.id} />
-          </aside>
-
-          <aside className="pane pane--database" aria-label="足球百科侧栏">
-            <EncyclopediaPanel compact />
+          <aside className="career-sidebar">
+            <section className="next-queue"><header><CircleEllipsis /><div><small>DECISION QUEUE</small><strong>本赛季剩余关键时刻</strong></div></header>{career.pendingEvents.length > 0 ? <ol>{career.pendingEvents.map((event, index) => <li className={index === 0 ? 'is-current' : ''} key={event.instanceId}><span>{String(index + 1).padStart(2, '0')}</span><div><strong>{event.title}</strong><small>{event.stage} · {getEventTemplate(event.templateId)?.kind}</small></div></li>)}</ol> : <p>所有关键时刻已经处理，可以推进赛季。</p>}</section>
+            <section className="sidebar-section"><header><div><small>SEASON LEDGER</small><strong>最近赛季</strong></div><Link to={`/season/${career.seasonRecords.at(-1)?.seasonYear ?? career.seasonYear}`}>查看</Link></header><SeasonLedger seasons={career.seasonRecords} compact /></section>
+            <section className="sidebar-section"><header><div><small>PLAYER SIGNALS</small><strong>影响下一次结果的状态</strong></div><Link to="/career/player">详情</Link></header><dl className="signal-list"><div><dt>教练信任</dt><dd>{career.player.metrics.coachTrust}</dd></div><div><dt>战术适配</dt><dd>{career.player.metrics.tacticalFit}</dd></div><div><dt>身心状态</dt><dd>{career.player.metrics.wellbeing}</dd></div><div><dt>压力</dt><dd>{career.player.metrics.pressure}</dd></div></dl><p className="fine-print">这些是已知状态，不等于成功概率。</p></section>
           </aside>
         </div>
       </main>
-
-      <MobileTabbar active={mobileTab} onChange={setMobileTab} />
     </AppShell>
   )
 }

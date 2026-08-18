@@ -1,120 +1,61 @@
-import { ArrowLeft, Radio, ShieldAlert, Timer, Trophy } from 'lucide-react'
+import { ArrowLeft, Radio, ShieldAlert } from 'lucide-react'
 import { useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, Navigate, useParams } from 'react-router-dom'
 import { useCareer } from '../app/CareerContext'
-import { trackEvent } from '../app/analytics'
-import type { Choice } from '../app/types'
-import { getClub, getMatch } from '../data/db'
-import { ClubMark } from '../components/ClubMark'
+import { ClubWordmark } from '../components/ClubWordmark'
+import { getClubThemeStyle } from '../components/clubTheme'
 import { DecisionPanel } from '../components/DecisionPanel'
-import { ExperienceContext } from '../components/ExperienceContext'
 import { ToastRegion } from '../components/ToastRegion'
+import { getWorldClub, worldClubs } from '../data/world/worldData'
+import { expireCareerEvent, resolveCareerEvent } from '../engine/careerEngine'
 
 export function MatchdayPage() {
   const { id = '' } = useParams()
-  const match = getMatch(id)
   const { state, dispatch } = useCareer()
-  const [selectedChoice, setSelectedChoice] = useState<Choice | null>(null)
+  const [resolved, setResolved] = useState<{ title: string; detail: string } | null>(null)
+  if (state.lifecycle === 'loading') return <div className="loading-screen"><span>91</span><p>正在接入比赛信号…</p></div>
+  if (!state.career) return <Navigate to="/create" replace />
+  const career = state.career
+  const event = career.pendingEvents.find((candidate) => candidate.instanceId === id)
+  const club = getWorldClub(career.player.currentClubId)
+  const opponents = worldClubs.filter((candidate) => candidate.competitionId === club?.competitionId && candidate.id !== club.id)
+  const opponent = opponents[Math.abs(id.length + career.seasonIndex) % Math.max(1, opponents.length)] ?? worldClubs.find((candidate) => candidate.id !== club?.id)
 
-  if (!match) {
+  const choose = (choiceId: string) => {
+    if (!event) return
+    const update = resolveCareerEvent(career, event.instanceId, choiceId)
+    const notice = update.notices[0]
+    setResolved({ title: notice?.title ?? '决定已经记录', detail: notice?.detail ?? '比赛继续。' })
+    dispatch({ type: 'replace-career', payload: update })
+  }
+
+  const expire = () => {
+    if (!event) return
+    const update = expireCareerEvent(career, event.instanceId)
+    const notice = update.notices[0]
+    setResolved({ title: notice?.title ?? '决定窗口已经关闭', detail: notice?.detail ?? '未行动已经写入职业记录。' })
+    dispatch({ type: 'replace-career', payload: update })
+  }
+
+  if (!event && !resolved) {
     return (
-      <div className="matchday-page theme-north-harbor">
-        <main id="main-content" className="route-error">
-          <ShieldAlert aria-hidden="true" size={32} />
-          <p className="eyebrow">MATCH NOT FOUND</p>
-          <h1>这场比赛不在当前赛程里</h1>
-          <p>链接可能已经失效，或者比赛尚未写入你的职业档案。</p>
-          <Link className="secondary-button" to="/career"><ArrowLeft aria-hidden="true" size={18} /> 返回职业中心</Link>
-        </main>
-      </div>
+      <div className="matchday-page" style={getClubThemeStyle(club)}><main className="route-error"><ShieldAlert /><p className="eyebrow">MATCH SIGNAL CLOSED</p><h1>这次比赛决定已经结束</h1><p>比赛记录已经回到职业时间线，或者该链接不属于当前存档。</p><Link className="secondary-button" to="/career"><ArrowLeft /> 返回职业中心</Link></main></div>
     )
   }
 
-  const homeClub = getClub(match.homeClubId)
-  const interactiveEvent = match.events.find((event) => event.isInteractive && event.relatedChoice)
-  const eventId = interactiveEvent?.id ?? 'match-decision'
-  const resolved = state.player.completedChoices.includes(eventId)
-
-  const choose = (choice: Choice) => {
-    setSelectedChoice(choice)
-    dispatch({ type: 'apply-choice', payload: { eventId, choice } })
-    trackEvent('match_choice_made', {
-      matchId: match.id,
-      choiceId: choice.id,
-      minute: interactiveEvent?.minute ?? match.currentMinute,
-    })
-  }
-
   return (
-    <div className={`matchday-page ${homeClub.themeClass}`}>
-      <header className="matchday-header">
-        <Link to="/career" className="text-link"><ArrowLeft aria-hidden="true" size={17} /> 职业中心</Link>
-        <span><Radio aria-hidden="true" size={16} /> LIVE TEXT · 外部消息已静音</span>
-        <span>{match.competition}</span>
-      </header>
-
+    <div className="matchday-page" style={getClubThemeStyle(club)}>
+      <header className="matchday-header"><Link to="/career" className="text-link"><ArrowLeft /> 职业中心</Link><span><Radio /> LIVE SIMULATION · 外部消息已静音</span><span>{career.seasonYear}/{String(career.seasonYear + 1).slice(-2)}</span></header>
       <main id="main-content" className="matchday-main">
-        <section className="scoreboard" aria-label={`${homeClub.name} ${match.score.home} 比 ${match.score.away} ${match.awayName}`}>
-          <div className="scoreboard__meta">
-            <span>{match.date}</span>
-            <span>{match.venue}</span>
-          </div>
-          <div className="scoreboard__teams">
-            <div><ClubMark clubId={homeClub.id} /><strong>{homeClub.name}</strong></div>
-            <div className="scoreboard__score">
-              <span>{match.score.home}</span><i>:</i><span>{match.score.away}</span>
-              <small><Timer aria-hidden="true" size={14} /> {match.currentMinute}'</small>
-            </div>
-            <div className="away-mark"><span>IV</span><strong>{match.awayName}</strong></div>
-          </div>
-          <div className="broadcast-ticker"><Radio aria-hidden="true" size={16} /><span>北港需要再进一球才能直接晋级 · 现场 2,840 人</span></div>
+        <section className="live-scoreboard" aria-label={`${club?.zhName} 对 ${opponent?.zhName}`}>
+          <div className="live-scoreboard__meta"><span>模拟关键比赛</span><span>{club?.stadium}</span><span>第 74 分钟</span></div>
+          <div className="live-scoreboard__teams"><ClubWordmark clubId={club?.id ?? ''} /><div><strong>—</strong><span>74'</span><strong>—</strong></div><ClubWordmark clubId={opponent?.id ?? ''} /></div>
+          <div className="live-ticker"><Radio /><span>比分被暂时隐藏：你必须先处理场上决定，最终赛季结果仍由模拟引擎结算。</span></div>
         </section>
-
-        <div className="matchday-grid">
-          <section className="match-log" aria-labelledby="match-log-title">
-            <span className="notebook-tab">NOTEBOOK 03</span>
-            <h2 id="match-log-title">比赛记录</h2>
-            <ol>
-              {match.events.map((event) => (
-                <li key={event.id} className={event.isInteractive ? 'is-current' : ''}>
-                  <time>{event.minute}'</time>
-                  <span className={`event-dot event-dot--${event.type}`} />
-                  <p>{event.text}</p>
-                </li>
-              ))}
-              {selectedChoice ? (
-                <li className="is-result">
-                  <time>73'</time><span className="event-dot event-dot--goal" />
-                  <p><strong>{selectedChoice.label}</strong>。这个决定已写入本场记录，教练席正在重新调整站位。</p>
-                </li>
-              ) : null}
-            </ol>
-          </section>
-
-          {interactiveEvent?.relatedChoice ? (
-            <div className="match-decision-stack">
-              <ExperienceContext experienceId={interactiveEvent.experienceId ?? 'debut-var'} />
-              <DecisionPanel
-                eventId={eventId}
-                eyebrow="ON-PITCH DECISION"
-                title={interactiveEvent.relatedChoice.title}
-                prompt={`${interactiveEvent.text} ${interactiveEvent.relatedChoice.prompt}`}
-                choices={interactiveEvent.relatedChoice.choices}
-                seconds={10}
-                resolved={resolved}
-                onChoose={choose}
-              />
-            </div>
-          ) : (
-            <section className="resolved-card">
-              <Trophy aria-hidden="true" />
-              <h2>比赛暂时没有新的决定</h2>
-              <p>继续阅读文字播报，下一次交互会在关键事件出现时开放。</p>
-            </section>
-          )}
+        <div className="matchday-workspace">
+          <section className="broadcast-log"><p className="eyebrow">LIVE TEXT</p><h2>比赛正在向你这一侧倾斜</h2><ol><li><time>61'</time><p>对手开始收窄中路，边线附近出现了可利用空间。</p></li><li><time>68'</time><p>教练席示意保持结构，但队友已经准备向前压。</p></li><li className="is-live"><time>74'</time><p>{event?.summary ?? resolved?.detail}</p></li></ol></section>
+          {event && !resolved ? <DecisionPanel event={event} onChoose={choose} onExpire={expire} /> : <section className="match-resolved"><span>DECISION RECORDED</span><h2>{resolved?.title}</h2><p>{resolved?.detail}</p><p>精确后果不会立即全部揭晓；它可能在本场赛季结算、教练信任或未来事件中显现。</p><Link className="primary-button" to="/career">回到职业时间线 <ArrowLeft /></Link></section>}
         </div>
-
-        <Link className="match-return" to="/career"><ArrowLeft aria-hidden="true" size={18} /> 保存本场结果并返回职业中心</Link>
       </main>
       <ToastRegion />
     </div>
