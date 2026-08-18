@@ -1,0 +1,20 @@
+{
+  "brand.name": "第 91 分钟",
+  "brand.subtitle": "足球球员职业生涯模拟器",
+  "nav.home": "新建档案",
+  "nav.career": "职业中心",
+  "nav.database": "足球百科",
+  "nav.match": "今晚比赛",
+  "notebook.news": "舆情与消息",
+  "notebook.career": "球员与俱乐部",
+  "notebook.match": "比赛记录",
+  "action.start": "创建青训档案",
+  "action.backCareer": "返回职业中心",
+  "action.clearSearch": "清除搜索",
+  "status.visitor": "访客体验档",
+  "status.saved": "本机存档",
+  "timer.remaining": "还剩 {seconds} 秒",
+  "timer.expired": "决定窗口已关闭",
+  "toast.archiveCreated": "青训档案已创建。第一份职业选择正在等待你。",
+  "empty.search": "没有找到与“{query}”匹配的术语。"
+}

@@ -1,0 +1,573 @@
+[
+  {
+    "id": "street-to-academy",
+    "stage": "academy",
+    "title": "从街头、五人制和沙滩走进青训",
+    "scenario": "五人制、沙滩足球和社区小场塑造了你的近距离控球与身体平衡，但青训教练要求你适应更大空间和固定职责。",
+    "factors": ["五人制", "沙滩足球", "社区足球", "技术迁移"],
+    "surfaces": ["news", "club", "match"],
+    "termIds": ["futsal-transfer", "player-role"],
+    "stakes": ["technique", "tactics"]
+  },
+  {
+    "id": "academy-trial",
+    "stage": "academy",
+    "title": "第一次青训选拔",
+    "scenario": "现场球探、视频片段和身体成熟度给出不同结论，你要在有限时间里展示真正可迁移的能力。",
+    "factors": ["人才识别", "现场球探", "数据筛选", "成熟度偏差"],
+    "surfaces": ["news", "club", "match"],
+    "termIds": ["recruitment-profile", "bio-banding"],
+    "stakes": ["technique", "composure", "reputation"]
+  },
+  {
+    "id": "school-family-balance",
+    "stage": "academy",
+    "title": "训练、学业与家庭时间冲突",
+    "scenario": "加练能提高入选概率，却会挤压学业、睡眠和家庭生活；俱乐部必须给出可持续的成长安排。",
+    "factors": ["学校教育", "家庭压力", "睡眠", "青少年福祉"],
+    "surfaces": ["news", "club"],
+    "termIds": ["safeguarding", "load-management"],
+    "stakes": ["wellbeing", "stamina", "composure"]
+  },
+  {
+    "id": "safeguarding-boundary",
+    "stage": "academy",
+    "title": "一对一训练越过了保护边界",
+    "scenario": "你需要识别不合适的沟通和封闭训练安排，并通过明确的保护渠道报告，而不是独自承担。",
+    "factors": ["儿童保护", "教练伦理", "报告机制", "家长沟通"],
+    "surfaces": ["news", "club"],
+    "termIds": ["safeguarding"],
+    "stakes": ["wellbeing", "composure"],
+    "sourceIds": ["fifa-guardians"]
+  },
+  {
+    "id": "position-experiment",
+    "stage": "academy",
+    "title": "你到底踢边锋还是中场",
+    "scenario": "教练把你放进不同阵型，观察接球方向、空间扫描和防守责任，而不是只看进球数。",
+    "factors": ["位置发展", "阵型", "扫描", "角色职责"],
+    "surfaces": ["club", "match"],
+    "termIds": ["player-role", "formation-shape", "half-space"],
+    "stakes": ["tactics", "technique"]
+  },
+  {
+    "id": "growth-spurt-load",
+    "stage": "academy",
+    "title": "生长突增改变训练负荷",
+    "scenario": "身体快速变化让动作和恢复暂时失衡，体能组会调整训练量，而不是把疲劳解释成意志不足。",
+    "factors": ["生长发育", "负荷监测", "恢复", "伤病预防"],
+    "surfaces": ["club", "match"],
+    "termIds": ["bio-banding", "load-management"],
+    "stakes": ["stamina", "wellbeing"]
+  },
+  {
+    "id": "first-derby-culture",
+    "stage": "academy",
+    "title": "第一次理解德比不只是比赛",
+    "scenario": "看台歌曲、城市区隔和家庭记忆让青年队比赛承载了身份，你要学会承受情绪又不被敌意吞没。",
+    "factors": ["地方身份", "球迷文化", "仪式", "城市历史"],
+    "surfaces": ["news", "match"],
+    "termIds": ["derby-identity", "supporter-ritual"],
+    "stakes": ["composure", "reputation"]
+  },
+  {
+    "id": "minor-agent-contact",
+    "stage": "academy",
+    "title": "经纪人第一次联系未成年球员",
+    "scenario": "承诺、佣金和代表关系同时出现，你需要监护人、俱乐部保护人员与适用规则共同介入。",
+    "factors": ["经纪人", "未成年人", "代表协议", "劳动保护"],
+    "surfaces": ["news", "club"],
+    "termIds": ["football-agent", "safeguarding"],
+    "stakes": ["wellbeing", "reputation"],
+    "sourceIds": ["fifa-agents", "fifa-guardians"]
+  },
+  {
+    "id": "first-contract",
+    "stage": "breakthrough",
+    "title": "第一份职业合同",
+    "scenario": "稳定出场、高压试训、合同期限和未来流动性互相牵制，名气最大的选择不一定最适合成长。",
+    "factors": ["球员合同", "战术适配", "出场路径", "经纪人"],
+    "surfaces": ["news", "club", "match"],
+    "termIds": ["football-agent", "release-clause", "recruitment-profile"],
+    "stakes": ["tactics", "wellbeing", "reputation"],
+    "sourceIds": ["fifa-agents"]
+  },
+  {
+    "id": "dressing-room-hierarchy",
+    "stage": "breakthrough",
+    "title": "进入成年队更衣室",
+    "scenario": "资历、队长、语言和非正式规则影响你能否开口，但沉默也可能让战术误解持续。",
+    "factors": ["更衣室文化", "领导力", "沟通", "团队心理"],
+    "surfaces": ["news", "club", "match"],
+    "termIds": ["dressing-room-leadership"],
+    "stakes": ["composure", "tactics", "wellbeing"]
+  },
+  {
+    "id": "loan-pathway",
+    "stage": "breakthrough",
+    "title": "租借换出场还是留队学体系",
+    "scenario": "租借能带来成年比赛，却也可能让你进入完全不同的战术、医疗和生活环境。",
+    "factors": ["租借", "出场时间", "联赛适配", "生活融入"],
+    "surfaces": ["news", "club"],
+    "termIds": ["loan", "recruitment-profile"],
+    "stakes": ["tactics", "wellbeing", "reputation"]
+  },
+  {
+    "id": "role-conflict",
+    "stage": "breakthrough",
+    "title": "个人特点与教练角色冲突",
+    "scenario": "你习惯持球突破，教练却要求无球内收和反抢；适应不是放弃特点，而是理解球队结构。",
+    "factors": ["角色职责", "战术适配", "反抢", "个人发展"],
+    "surfaces": ["club", "match"],
+    "termIds": ["inverted-winger", "counter-press", "rest-defense"],
+    "stakes": ["technique", "tactics", "composure"]
+  },
+  {
+    "id": "debut-var",
+    "stage": "breakthrough",
+    "title": "首秀进球等待 VAR",
+    "scenario": "庆祝、越位线、转播画面和裁判沟通同时发生，你必须在不确定中迅速回到比赛。",
+    "factors": ["越位", "VAR", "裁判沟通", "情绪恢复"],
+    "surfaces": ["news", "match"],
+    "termIds": ["offside", "var-protocol"],
+    "stakes": ["composure", "reputation"],
+    "sourceIds": ["ifab-laws"]
+  },
+  {
+    "id": "media-breakthrough",
+    "stage": "breakthrough",
+    "title": "一场好球被媒体写成球星神话",
+    "scenario": "短视频、数据图和采访把一次表现放大成固定形象，你要决定配合、纠正还是保持距离。",
+    "factors": ["媒体叙事", "球星神话", "社交媒体", "形象管理"],
+    "surfaces": ["news", "club"],
+    "termIds": ["media-narrative", "expected-goals"],
+    "stakes": ["reputation", "wellbeing", "composure"]
+  },
+  {
+    "id": "discrimination-response",
+    "stage": "breakthrough",
+    "title": "客场出现歧视性辱骂",
+    "scenario": "继续比赛、告知裁判、队友支持和赛后报告不是互斥选项，俱乐部与赛事方都有责任。",
+    "factors": ["种族歧视", "反恐同", "报告机制", "队友责任"],
+    "surfaces": ["news", "club", "match"],
+    "termIds": ["anti-discrimination", "referee-protocol"],
+    "stakes": ["wellbeing", "composure", "reputation"]
+  },
+  {
+    "id": "first-muscle-injury",
+    "stage": "breakthrough",
+    "title": "第一次因伤离开名单",
+    "scenario": "医学评估、康复进度、位置竞争和合同压力一起到来，复出日期不能只由焦虑决定。",
+    "factors": ["肌肉伤病", "康复", "回归比赛", "位置竞争"],
+    "surfaces": ["news", "club"],
+    "termIds": ["return-to-play", "load-management"],
+    "stakes": ["stamina", "wellbeing", "reputation"]
+  },
+  {
+    "id": "transfer-fit",
+    "stage": "established",
+    "title": "转会不是比较球员总评分",
+    "scenario": "球探报告把位置画像、联赛节奏、伤病史、性格与合同价格放在同一张风险表里。",
+    "factors": ["球探招募", "位置画像", "联赛适配", "转会估值"],
+    "surfaces": ["news", "club", "match"],
+    "termIds": ["recruitment-profile", "data-limitations"],
+    "stakes": ["tactics", "wellbeing", "reputation"]
+  },
+  {
+    "id": "opposition-report",
+    "stage": "established",
+    "title": "赛前对手报告改变跑位",
+    "scenario": "压迫触发点、关键球员、转换弱点和定位球习惯被压缩成可执行的比赛计划。",
+    "factors": ["对手分析", "压迫陷阱", "转换", "定位球"],
+    "surfaces": ["club", "match"],
+    "termIds": ["opposition-analysis", "pressing-trigger", "set-piece"],
+    "stakes": ["tactics", "composure"]
+  },
+  {
+    "id": "set-piece-specialist",
+    "stage": "established",
+    "title": "成为定位球小组的一部分",
+    "scenario": "跑动掩护、二点球和防守盯人让一次角球像排练好的短剧，每个人的厘米级起点都重要。",
+    "factors": ["角球", "任意球", "掩护", "二点球"],
+    "surfaces": ["club", "match"],
+    "termIds": ["set-piece", "second-ball"],
+    "stakes": ["tactics", "technique", "reputation"]
+  },
+  {
+    "id": "schedule-congestion",
+    "stage": "established",
+    "title": "连续一周双赛",
+    "scenario": "赛程、旅行、睡眠、轮换和训练减量共同决定你是保持节奏还是进入伤病风险区。",
+    "factors": ["赛程安排", "旅行", "恢复", "轮换"],
+    "surfaces": ["news", "club", "match"],
+    "termIds": ["microcycle", "load-management", "performance-technology"],
+    "stakes": ["stamina", "wellbeing"]
+  },
+  {
+    "id": "data-disagreement",
+    "stage": "established",
+    "title": "数据说机会合理，舆论说你太浪费",
+    "scenario": "xG、视频和射门选择必须一起阅读，单一数字既不能洗掉错误，也不能替代比赛语境。",
+    "factors": ["xG", "视频分析", "数据局限", "媒体舆论"],
+    "surfaces": ["news", "club", "match"],
+    "termIds": ["expected-goals", "data-limitations", "performance-technology"],
+    "stakes": ["technique", "composure", "reputation"]
+  },
+  {
+    "id": "coach-change",
+    "stage": "established",
+    "title": "换帅让核心球员重新竞争",
+    "scenario": "新教练改变阵型、训练周期和权力关系，过去的表现不会自动转换成新体系里的位置。",
+    "factors": ["换帅", "战术流派", "训练周期", "更衣室权力"],
+    "surfaces": ["news", "club", "match"],
+    "termIds": ["formation-shape", "microcycle", "dressing-room-leadership"],
+    "stakes": ["tactics", "wellbeing", "reputation"]
+  },
+  {
+    "id": "captaincy",
+    "stage": "established",
+    "title": "第一次戴上队长袖标",
+    "scenario": "你要在裁判、教练、更衣室和看台之间传递信息，也要替处于弱势的队友发声。",
+    "factors": ["队长职责", "裁判沟通", "团队心理", "包容性领导"],
+    "surfaces": ["news", "club", "match"],
+    "termIds": ["dressing-room-leadership", "referee-protocol"],
+    "stakes": ["composure", "wellbeing", "reputation"]
+  },
+  {
+    "id": "supporter-ownership-protest",
+    "stage": "established",
+    "title": "球迷抗议俱乐部所有权",
+    "scenario": "球队希望球员专注比赛，但会员制、私人资本、国家资本和地方身份让沉默本身也会被解读。",
+    "factors": ["俱乐部治理", "所有权", "球迷抗议", "地方身份"],
+    "surfaces": ["news", "club"],
+    "termIds": ["club-ownership", "supporter-ritual"],
+    "stakes": ["wellbeing", "reputation"]
+  },
+  {
+    "id": "supplement-check",
+    "stage": "established",
+    "title": "恢复补剂存在成分风险",
+    "scenario": "即使包装写着天然，球员也不能自行推断合规；需要向队医和反兴奋剂专业人员核验当年度规则。",
+    "factors": ["补剂", "反兴奋剂", "严格责任", "医疗沟通"],
+    "surfaces": ["news", "club"],
+    "termIds": ["anti-doping"],
+    "stakes": ["wellbeing", "reputation"],
+    "sourceIds": ["wada-list"]
+  },
+  {
+    "id": "major-tournament",
+    "stage": "prime",
+    "title": "国家队大赛把个人变成国家叙事",
+    "scenario": "你的场上选择会被放进移民、地区、国歌和历史记忆中解释，球员身份不再只属于俱乐部。",
+    "factors": ["国家身份", "赛事体系", "移民", "大赛叙事"],
+    "surfaces": ["news", "club", "match"],
+    "termIds": ["national-team-identity", "media-narrative", "competition-ecosystem"],
+    "stakes": ["composure", "wellbeing", "reputation"]
+  },
+  {
+    "id": "derby-ritual-prime",
+    "stage": "prime",
+    "title": "成为德比仪式中的核心人物",
+    "scenario": "球衣、歌曲、宗教或社区记忆把你的动作转化为神话，也可能放大一次普通失误。",
+    "factors": ["宗教与仪式", "球星神话", "看台文化", "集体记忆"],
+    "surfaces": ["news", "match"],
+    "termIds": ["derby-identity", "supporter-ritual"],
+    "stakes": ["composure", "reputation"]
+  },
+  {
+    "id": "financial-crisis",
+    "stage": "prime",
+    "title": "俱乐部财政危机影响工资与阵容",
+    "scenario": "财政监管、所有权决策和商业收入最终落到球员合同、转会限制与日常信任上。",
+    "factors": ["财政监管", "工资", "转会限制", "治理危机"],
+    "surfaces": ["news", "club"],
+    "termIds": ["financial-regulation", "club-ownership"],
+    "stakes": ["wellbeing", "reputation"]
+  },
+  {
+    "id": "multi-club-transfer",
+    "stage": "prime",
+    "title": "多俱乐部集团安排内部转会",
+    "scenario": "共享数据和资产配置提高流动效率，却可能让个人发展被集团需求覆盖。",
+    "factors": ["多俱乐部集团", "内部转会", "数据共享", "利益冲突"],
+    "surfaces": ["news", "club"],
+    "termIds": ["multi-club-model", "data-privacy"],
+    "stakes": ["tactics", "wellbeing", "reputation"]
+  },
+  {
+    "id": "image-rights-sponsor",
+    "stage": "prime",
+    "title": "赞助合同与个人立场冲突",
+    "scenario": "肖像权、俱乐部商业义务和你的社会立场发生碰撞，需要区分合同承诺、价值表达与危机公关。",
+    "factors": ["肖像权", "赞助", "个人品牌", "伦理"],
+    "surfaces": ["news", "club"],
+    "termIds": ["image-rights", "media-narrative"],
+    "stakes": ["wellbeing", "reputation"]
+  },
+  {
+    "id": "tactical-innovation",
+    "stage": "prime",
+    "title": "教练要求你成为新的混合角色",
+    "scenario": "边后卫内收、边锋回撤和三后卫转换说明阵型只是起点，动态站位才决定空间关系。",
+    "factors": ["混合角色", "动态站位", "控球结构", "转换"],
+    "surfaces": ["club", "match"],
+    "termIds": ["inverted-fullback", "formation-shape", "rest-defense"],
+    "stakes": ["tactics", "technique", "reputation"]
+  },
+  {
+    "id": "var-public-controversy",
+    "stage": "prime",
+    "title": "一次 VAR 判罚成为全国争论",
+    "scenario": "规则文本、画面选择、转播解释和球迷正义感交织，赛后发言要避免把不确定说成阴谋。",
+    "factors": ["VAR", "规则解释", "转播画面", "公共争议"],
+    "surfaces": ["news", "match"],
+    "termIds": ["var-protocol", "media-narrative"],
+    "stakes": ["composure", "reputation"],
+    "sourceIds": ["ifab-laws"]
+  },
+  {
+    "id": "concussion-removal",
+    "stage": "prime",
+    "title": "关键比赛疑似脑震荡被换下",
+    "scenario": "比分与个人意愿不能替代医学评估；识别、保护和分阶段回归由专业人员负责。",
+    "factors": ["脑震荡", "医学评估", "换人协议", "回归活动"],
+    "surfaces": ["news", "club", "match"],
+    "termIds": ["concussion-protocol", "return-to-play"],
+    "stakes": ["wellbeing", "stamina", "reputation"],
+    "sourceIds": ["fifa-concussion", "ifab-laws"]
+  },
+  {
+    "id": "allyship-identity",
+    "stage": "prime",
+    "title": "队友身份被公开讨论",
+    "scenario": "支持 LGBTQ+ 队友不是一次营销贴文，而涉及更衣室语言、看台报告、隐私和长期安全。",
+    "factors": ["LGBTQ+", "隐私", "队友支持", "包容性文化"],
+    "surfaces": ["news", "club"],
+    "termIds": ["anti-discrimination", "data-privacy"],
+    "stakes": ["wellbeing", "reputation"]
+  },
+  {
+    "id": "acl-rehabilitation",
+    "stage": "turning-point",
+    "title": "长期膝伤重写赛季",
+    "scenario": "手术与否、康复阶段、心理安全感和合同节点形成一条长时间线，尤其要关注女足球员不同的研究与资源环境。",
+    "factors": ["ACL", "康复", "女足医学", "心理支持"],
+    "surfaces": ["news", "club"],
+    "termIds": ["return-to-play", "women-player-health"],
+    "stakes": ["wellbeing", "stamina", "composure"]
+  },
+  {
+    "id": "burnout",
+    "stage": "turning-point",
+    "title": "持续高压变成心理耗竭",
+    "scenario": "睡眠、情绪、训练动机和社交退缩发出信号，寻求专业支持不应被写成缺乏职业精神。",
+    "factors": ["心理健康", "倦怠", "睡眠", "污名"],
+    "surfaces": ["news", "club"],
+    "termIds": ["player-wellbeing", "load-management"],
+    "stakes": ["wellbeing", "composure", "stamina"]
+  },
+  {
+    "id": "contract-expiry",
+    "stage": "turning-point",
+    "title": "合同年与自由身压力",
+    "scenario": "短期表现、伤病披露、家庭安置和经纪人谈判同时影响下一站，公开传闻不等于正式报价。",
+    "factors": ["合同到期", "自由身", "伤病披露", "转会传闻"],
+    "surfaces": ["news", "club"],
+    "termIds": ["football-agent", "media-narrative"],
+    "stakes": ["wellbeing", "reputation"]
+  },
+  {
+    "id": "integrity-approach",
+    "stage": "turning-point",
+    "title": "有人试探你操纵比赛细节",
+    "scenario": "操纵角球或黄牌同样破坏竞赛诚信，你需要保存证据并使用正式报告渠道，而不是私下谈判。",
+    "factors": ["假球", "体育博彩", "竞赛诚信", "报告保护"],
+    "surfaces": ["news", "club", "match"],
+    "termIds": ["match-integrity"],
+    "stakes": ["wellbeing", "reputation"]
+  },
+  {
+    "id": "extreme-heat",
+    "stage": "turning-point",
+    "title": "极端高温改变赛程和身体风险",
+    "scenario": "开球时间、补水、冷却措施、旅行与赛事商业安排需要共同调整，球员不能只被要求忍耐。",
+    "factors": ["气候", "高温", "赛程", "球员安全"],
+    "surfaces": ["news", "club", "match"],
+    "termIds": ["heat-protocol", "sustainable-football"],
+    "stakes": ["stamina", "wellbeing"]
+  },
+  {
+    "id": "stadium-emergency",
+    "stage": "turning-point",
+    "title": "比赛因看台紧急事件中止",
+    "scenario": "球员要服从现场指挥，赛事方同时处理医疗、疏散、信息和无障碍需求，比分不再是第一优先。",
+    "factors": ["比赛日运营", "应急疏散", "医疗响应", "无障碍"],
+    "surfaces": ["news", "match"],
+    "termIds": ["matchday-operations", "stadium-accessibility"],
+    "stakes": ["wellbeing", "composure"],
+    "sourceIds": ["fifa-stadiums"]
+  },
+  {
+    "id": "national-trauma",
+    "stage": "turning-point",
+    "title": "一次失利进入国家集体记忆",
+    "scenario": "点球、失误或惨败会被不断重播，球员既面对个人创伤，也成为媒体讲述国家故事的符号。",
+    "factors": ["记忆与创伤", "国家叙事", "哀悼", "媒体复现"],
+    "surfaces": ["news", "match"],
+    "termIds": ["collective-memory", "media-narrative"],
+    "stakes": ["wellbeing", "composure", "reputation"]
+  },
+  {
+    "id": "global-mobility",
+    "stage": "turning-point",
+    "title": "跨洲转会与文化适应",
+    "scenario": "语言、签证、家庭、种族化期待和联赛权力结构一起影响适应，全球流动从来不只是换一间更衣室。",
+    "factors": ["移民", "殖民遗产", "工作许可", "文化适应"],
+    "surfaces": ["news", "club"],
+    "termIds": ["global-football-mobility", "anti-discrimination"],
+    "stakes": ["wellbeing", "tactics", "reputation"]
+  },
+  {
+    "id": "youth-mentor",
+    "stage": "turning-point",
+    "title": "成为青年球员的第一位队内导师",
+    "scenario": "你要传递职业习惯，也要尊重保护边界，不把自己经历过的不合理压力复制给下一代。",
+    "factors": ["导师制", "儿童保护", "领导力", "代际文化"],
+    "surfaces": ["news", "club"],
+    "termIds": ["safeguarding", "dressing-room-leadership"],
+    "stakes": ["wellbeing", "reputation"],
+    "sourceIds": ["fifa-guardians"]
+  },
+  {
+    "id": "veteran-role",
+    "stage": "legacy",
+    "title": "从主力转为更衣室老将",
+    "scenario": "上场时间下降不等于价值消失，你可以用训练标准、比赛阅读和沟通帮助阵容保持连续性。",
+    "factors": ["老将角色", "轮换", "导师制", "身份转变"],
+    "surfaces": ["news", "club", "match"],
+    "termIds": ["dressing-room-leadership", "microcycle"],
+    "stakes": ["wellbeing", "composure", "reputation"]
+  },
+  {
+    "id": "player-coach-path",
+    "stage": "legacy",
+    "title": "开始教练教育",
+    "scenario": "会踢不等于会教，你需要学习训练设计、反馈、保护责任和如何把直觉转成可传递语言。",
+    "factors": ["教练教育", "训练设计", "反馈", "保护责任"],
+    "surfaces": ["club", "match"],
+    "termIds": ["microcycle", "safeguarding"],
+    "stakes": ["tactics", "reputation"]
+  },
+  {
+    "id": "media-analyst-path",
+    "stage": "legacy",
+    "title": "从被报道者变成比赛分析者",
+    "scenario": "转播镜头和战术图能解释比赛，也会选择性制造故事；你的经验需要和证据、语言边界一起使用。",
+    "factors": ["转播分析", "媒体叙事", "战术解释", "证据边界"],
+    "surfaces": ["news", "match"],
+    "termIds": ["media-narrative", "data-limitations"],
+    "stakes": ["tactics", "reputation"]
+  },
+  {
+    "id": "sporting-director-path",
+    "stage": "legacy",
+    "title": "进入球探与体育总监路径",
+    "scenario": "你从个人选择转向设计整支球队的年龄结构、招募流程、青训通道和教练继任。",
+    "factors": ["体育总监", "球探招募", "阵容规划", "俱乐部治理"],
+    "surfaces": ["news", "club"],
+    "termIds": ["sporting-director", "recruitment-profile", "club-ownership"],
+    "stakes": ["tactics", "reputation"]
+  },
+  {
+    "id": "grassroots-foundation",
+    "stage": "legacy",
+    "title": "把职业资源带回社区足球",
+    "scenario": "场地、教练教育、女孩参与、残障可达性和长期运营决定项目是否真正留下，而不只是一次活动。",
+    "factors": ["草根足球", "女足参与", "残障足球", "社区运营"],
+    "surfaces": ["news", "club"],
+    "termIds": ["inclusive-football", "stadium-accessibility"],
+    "stakes": ["wellbeing", "reputation"],
+    "sourceIds": ["fifa-stadiums"]
+  },
+  {
+    "id": "football-archive",
+    "stage": "legacy",
+    "title": "整理自己的比赛档案与口述史",
+    "scenario": "比赛报告、照片、数据和回忆相互补充，也会互相矛盾；记录生涯需要区分史料与后来解释。",
+    "factors": ["足球档案", "研究方法", "口述史", "记忆偏差"],
+    "surfaces": ["news", "club", "match"],
+    "termIds": ["source-literacy", "collective-memory"],
+    "stakes": ["composure", "reputation"]
+  },
+  {
+    "id": "retirement-health",
+    "stage": "legacy",
+    "title": "退役后的身体与身份过渡",
+    "scenario": "训练量下降、旧伤、职业身份和社交结构同时改变，长期健康计划不能等到最后一场才开始。",
+    "factors": ["退役转型", "长期健康", "旧伤", "身份变化"],
+    "surfaces": ["news", "club"],
+    "termIds": ["player-wellbeing", "return-to-play"],
+    "stakes": ["wellbeing", "composure"]
+  },
+  {
+    "id": "sustainable-legacy",
+    "stage": "legacy",
+    "title": "推动更可持续的赛程与球场",
+    "scenario": "球员旅行、开球时间、球场能源、草皮用水和社区使用共同构成足球的环境账单。",
+    "factors": ["可持续发展", "球迷旅行", "球场能源", "草皮用水"],
+    "surfaces": ["news", "club", "match"],
+    "termIds": ["sustainable-football", "pitch-surface"],
+    "stakes": ["wellbeing", "reputation"],
+    "sourceIds": ["fifa-stadiums"]
+  },
+  {
+    "id": "goalkeeper-specialist-camp",
+    "stage": "academy",
+    "title": "临时客串门将后进入专项训练",
+    "scenario": "扑救只是门将工作的一部分，接高球、站位、出击、脚下分配、指挥防线和落地保护会让你第一次理解这个位置的独立训练体系。",
+    "factors": ["门将专项", "扑救与出击", "传球分配", "位置特有伤病预防"],
+    "surfaces": ["club", "match"],
+    "termIds": ["goalkeeper-specialism", "performance-technology"],
+    "stakes": ["technique", "tactics", "composure", "wellbeing"]
+  },
+  {
+    "id": "performance-support-meeting",
+    "stage": "established",
+    "title": "第一次参加跨部门球员发展会",
+    "scenario": "主教练、助教、分析师、队医、营养师、心理支持人员和体能团队从不同证据讨论你的计划，你需要知道谁负责什么以及如何提出异议。",
+    "factors": ["职业支持团队", "表现科技", "知情沟通", "训练反馈"],
+    "surfaces": ["news", "club", "match"],
+    "termIds": ["football-support-team", "performance-technology", "data-limitations"],
+    "stakes": ["tactics", "wellbeing", "composure"]
+  },
+  {
+    "id": "football-aesthetics-debate",
+    "stage": "prime",
+    "title": "赢球方式被批评为不够漂亮",
+    "scenario": "控球比例、低位防守、身体对抗和一次反击胜利被放进不同审美标准，球员要区分战术效果、个人风格与媒体制造的道德高低。",
+    "factors": ["足球美学", "战术风格", "防守价值", "媒体评价"],
+    "surfaces": ["news", "club", "match"],
+    "termIds": ["football-aesthetics", "media-narrative", "formation-shape"],
+    "stakes": ["tactics", "composure", "reputation"]
+  },
+  {
+    "id": "virtual-rating-culture",
+    "stage": "prime",
+    "title": "游戏评分开始替你定义能力",
+    "scenario": "足球游戏、模拟经营、电竞直播和社交媒体把复杂表现压缩成总评分与潜力值，球迷、赞助商甚至年轻球员会把它当作真实球探结论。",
+    "factors": ["足球游戏", "模拟文化", "球员评分", "电竞与媒体"],
+    "surfaces": ["news", "club"],
+    "termIds": ["football-simulation-culture", "data-limitations", "media-narrative"],
+    "stakes": ["composure", "reputation", "wellbeing"]
+  },
+  {
+    "id": "contract-dispute-resolution",
+    "stage": "turning-point",
+    "title": "伤病责任与合同解释发生争议",
+    "scenario": "保险、工资、医疗记录、注册规则和合同文字给出不同责任路径，你需要独立代表、适用机构和专业法律意见，而不是只听最强势的一方。",
+    "factors": ["足球争议解决", "伤病责任", "保险", "劳动与注册规则"],
+    "surfaces": ["news", "club"],
+    "termIds": ["football-dispute-resolution", "football-agent", "return-to-play"],
+    "stakes": ["wellbeing", "composure", "reputation"]
+  }
+]

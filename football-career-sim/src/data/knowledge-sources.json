@@ -1,0 +1,44 @@
+[
+  {
+    "id": "ifab-laws",
+    "label": "IFAB · Laws of the Game 2026/27",
+    "url": "https://www.theifab.com/laws-of-the-game-documents/?language=en&year=2026%2F27",
+    "scope": "规则、裁判与 VAR 的版本化入口",
+    "checkedAt": "2026-08-18"
+  },
+  {
+    "id": "fifa-guardians",
+    "label": "FIFA Guardians · Safeguarding policy guidance",
+    "url": "https://inside.fifa.com/human-rights/fifa-guardians/guidance",
+    "scope": "青训与儿童保护的组织责任和风险管理",
+    "checkedAt": "2026-08-18"
+  },
+  {
+    "id": "fifa-agents",
+    "label": "FIFA · Football Agents regulatory documents",
+    "url": "https://inside.fifa.com/transfer-system/agents",
+    "scope": "经纪人许可、代表协议与国际转会监管入口",
+    "checkedAt": "2026-08-18"
+  },
+  {
+    "id": "wada-list",
+    "label": "WADA · 2026 Prohibited List",
+    "url": "https://www.wada-ama.org/en/resources/world-anti-doping-program/prohibited-list",
+    "scope": "当年度禁用物质与方法的权威入口",
+    "checkedAt": "2026-08-18"
+  },
+  {
+    "id": "fifa-concussion",
+    "label": "FIFA · Concussion protocols & toolkits",
+    "url": "https://inside.fifa.com/en/concussion-protocols-and-toolkits",
+    "scope": "脑震荡识别、保护与回归活动的官方协议入口",
+    "checkedAt": "2026-08-18"
+  },
+  {
+    "id": "fifa-stadiums",
+    "label": "FIFA · Football Stadium Guidelines",
+    "url": "https://inside.fifa.com/innovation/stadium-guidelines",
+    "scope": "球场安全、无障碍、草皮、运营与可持续设计",
+    "checkedAt": "2026-08-18"
+  }
+]

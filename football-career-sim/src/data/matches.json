@@ -1,0 +1,61 @@
+[
+  {
+    "id": "final-qualifier",
+    "competition": "全国发展联赛 · 晋级资格赛",
+    "date": "2031-08-18",
+    "venue": "北港训练场 · 2,840 人",
+    "homeClubId": "north-harbor",
+    "awayName": "铁谷青年队",
+    "score": { "home": 1, "away": 1 },
+    "currentMinute": 72,
+    "events": [
+      {
+        "id": "m-12",
+        "minute": 12,
+        "type": "goal",
+        "text": "铁谷通过二点球先得一分，北港后腰没能及时保护禁区弧顶。",
+        "isInteractive": false
+      },
+      {
+        "id": "m-37",
+        "minute": 37,
+        "type": "goal",
+        "text": "北港右路连续换位后扳平比分。你在弱侧牵制了对方边后卫。",
+        "isInteractive": false
+      },
+      {
+        "id": "m-61",
+        "minute": 61,
+        "type": "sub",
+        "text": "主教练示意你热身：下一次死球，你将替补登场。",
+        "isInteractive": false
+      },
+      {
+        "id": "m-72-choice",
+        "minute": 72,
+        "type": "decision",
+        "text": "你在右侧半空间接球，边后卫已经套上，中卫正向你压迫。",
+        "isInteractive": true,
+        "experienceId": "role-conflict",
+        "relatedChoice": {
+          "title": "第 72 分钟 · 处理球",
+          "prompt": "这次选择会改变最后二十分钟的比赛方式。",
+          "choices": [
+            {
+              "id": "thread-pass",
+              "label": "直塞套上的边后卫",
+              "hint": "考验战术默契，成功后能直接攻击底线。",
+              "effects": { "stamina": -2, "technique": 2, "tactics": 4, "composure": 2, "reputation": 2 }
+            },
+            {
+              "id": "turn-and-shoot",
+              "label": "转身起脚远射",
+              "hint": "更冒险，但这会是所有人记住你的方式。",
+              "effects": { "stamina": -3, "technique": 3, "tactics": -1, "composure": -2, "reputation": 5 }
+            }
+          ]
+        }
+      }
+    ]
+  }
+]

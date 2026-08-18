@@ -1,0 +1,17 @@
+[
+  { "id": "ENG", "name": "England", "zhName": "英格兰", "confederation": "UEFA", "competitionId": "eng-premier-league" },
+  { "id": "ESP", "name": "Spain", "zhName": "西班牙", "confederation": "UEFA", "competitionId": "esp-laliga" },
+  { "id": "GER", "name": "Germany", "zhName": "德国", "confederation": "UEFA", "competitionId": "ger-bundesliga" },
+  { "id": "ITA", "name": "Italy", "zhName": "意大利", "confederation": "UEFA", "competitionId": "ita-serie-a" },
+  { "id": "FRA", "name": "France", "zhName": "法国", "confederation": "UEFA", "competitionId": "fra-ligue-1" },
+  { "id": "POR", "name": "Portugal", "zhName": "葡萄牙", "confederation": "UEFA", "competitionId": "por-primeira" },
+  { "id": "NED", "name": "Netherlands", "zhName": "荷兰", "confederation": "UEFA", "competitionId": "ned-eredivisie" },
+  { "id": "BEL", "name": "Belgium", "zhName": "比利时", "confederation": "UEFA", "competitionId": "bel-pro-league" },
+  { "id": "CHN", "name": "China PR", "zhName": "中国", "confederation": "AFC", "competitionId": "chn-super-league" },
+  { "id": "JPN", "name": "Japan", "zhName": "日本", "confederation": "AFC", "competitionId": "jpn-j1" },
+  { "id": "KOR", "name": "Korea Republic", "zhName": "韩国", "confederation": "AFC", "competitionId": "kor-k1" },
+  { "id": "KSA", "name": "Saudi Arabia", "zhName": "沙特阿拉伯", "confederation": "AFC", "competitionId": "sau-pro-league" },
+  { "id": "BRA", "name": "Brazil", "zhName": "巴西", "confederation": "CONMEBOL", "competitionId": "bra-serie-a" },
+  { "id": "ARG", "name": "Argentina", "zhName": "阿根廷", "confederation": "CONMEBOL", "competitionId": "arg-lpf" },
+  { "id": "USA", "name": "United States", "zhName": "美国", "confederation": "CONCACAF", "competitionId": "usa-mls" }
+]

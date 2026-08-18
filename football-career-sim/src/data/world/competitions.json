@@ -1,0 +1,17 @@
+[
+  { "id": "eng-premier-league", "name": "Premier League", "zhName": "英格兰足球超级联赛", "countryId": "ENG", "calendar": "autumn-spring", "tier": 1, "sourceRefs": ["official-premier-league"] },
+  { "id": "esp-laliga", "name": "LALIGA EA SPORTS", "zhName": "西班牙足球甲级联赛", "countryId": "ESP", "calendar": "autumn-spring", "tier": 1, "sourceRefs": ["official-laliga"] },
+  { "id": "ger-bundesliga", "name": "Bundesliga", "zhName": "德国足球甲级联赛", "countryId": "GER", "calendar": "autumn-spring", "tier": 1, "sourceRefs": ["official-bundesliga"] },
+  { "id": "ita-serie-a", "name": "Serie A", "zhName": "意大利足球甲级联赛", "countryId": "ITA", "calendar": "autumn-spring", "tier": 1, "sourceRefs": ["official-serie-a"] },
+  { "id": "fra-ligue-1", "name": "Ligue 1", "zhName": "法国足球甲级联赛", "countryId": "FRA", "calendar": "autumn-spring", "tier": 1, "sourceRefs": ["official-ligue-1"] },
+  { "id": "por-primeira", "name": "Liga Portugal", "zhName": "葡萄牙足球超级联赛", "countryId": "POR", "calendar": "autumn-spring", "tier": 1, "sourceRefs": ["official-liga-portugal"] },
+  { "id": "ned-eredivisie", "name": "Eredivisie", "zhName": "荷兰足球甲级联赛", "countryId": "NED", "calendar": "autumn-spring", "tier": 1, "sourceRefs": ["official-eredivisie"] },
+  { "id": "bel-pro-league", "name": "Belgian Pro League", "zhName": "比利时职业联赛", "countryId": "BEL", "calendar": "autumn-spring", "tier": 1, "sourceRefs": ["official-belgian-pro-league"] },
+  { "id": "chn-super-league", "name": "Chinese Super League", "zhName": "中国足球超级联赛", "countryId": "CHN", "calendar": "calendar-year", "tier": 1, "sourceRefs": ["official-cfa"] },
+  { "id": "jpn-j1", "name": "J1 League", "zhName": "日本职业足球甲级联赛", "countryId": "JPN", "calendar": "autumn-spring", "tier": 1, "sourceRefs": ["official-j-league"] },
+  { "id": "kor-k1", "name": "K League 1", "zhName": "韩国职业足球甲级联赛", "countryId": "KOR", "calendar": "calendar-year", "tier": 1, "sourceRefs": ["official-k-league"] },
+  { "id": "sau-pro-league", "name": "Saudi Pro League", "zhName": "沙特职业足球联赛", "countryId": "KSA", "calendar": "autumn-spring", "tier": 1, "sourceRefs": ["official-saudi-pro-league"] },
+  { "id": "bra-serie-a", "name": "Campeonato Brasileiro Série A", "zhName": "巴西足球甲级联赛", "countryId": "BRA", "calendar": "calendar-year", "tier": 1, "sourceRefs": ["official-cbf"] },
+  { "id": "arg-lpf", "name": "Liga Profesional de Fútbol", "zhName": "阿根廷职业足球联赛", "countryId": "ARG", "calendar": "calendar-year", "tier": 1, "sourceRefs": ["official-argentina-lpf"] },
+  { "id": "usa-mls", "name": "Major League Soccer", "zhName": "美国职业足球大联盟", "countryId": "USA", "calendar": "calendar-year", "tier": 1, "sourceRefs": ["official-mls"] }
+]

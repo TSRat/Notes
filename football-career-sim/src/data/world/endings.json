@@ -1,0 +1,12 @@
+[
+  { "id": "era-legend", "title": "时代留下了你的名字", "tone": "triumphant", "thresholds": { "sporting": 92, "longevity": 70, "clubLegacy": 65, "nationalLegacy": 55, "life": 45 } },
+  { "id": "world-star", "title": "世界认识了你", "tone": "triumphant", "thresholds": { "sporting": 84, "longevity": 60, "clubLegacy": 45, "nationalLegacy": 35, "life": 35 } },
+  { "id": "one-club-legend", "title": "看台仍在唱你的名字", "tone": "warm", "thresholds": { "sporting": 68, "longevity": 82, "clubLegacy": 92, "nationalLegacy": 0, "life": 60 } },
+  { "id": "national-hero", "title": "祖国记住了那个夜晚", "tone": "triumphant", "thresholds": { "sporting": 70, "longevity": 50, "clubLegacy": 30, "nationalLegacy": 90, "life": 45 } },
+  { "id": "promotion-hero", "title": "你把他们带了回来", "tone": "warm", "thresholds": { "sporting": 58, "longevity": 55, "clubLegacy": 82, "nationalLegacy": 0, "life": 55 } },
+  { "id": "journeyman-home", "title": "世界很大，终于有一处是家", "tone": "warm", "thresholds": { "sporting": 55, "longevity": 72, "clubLegacy": 55, "nationalLegacy": 10, "life": 78 } },
+  { "id": "injury-return", "title": "你重新穿过了球员通道", "tone": "hopeful", "thresholds": { "sporting": 55, "longevity": 58, "clubLegacy": 45, "nationalLegacy": 0, "life": 72 } },
+  { "id": "reliable-professional", "title": "一份完整的职业生涯", "tone": "warm", "thresholds": { "sporting": 52, "longevity": 70, "clubLegacy": 40, "nationalLegacy": 0, "life": 65 } },
+  { "id": "mentor", "title": "你教过的年轻人还在踢", "tone": "hopeful", "thresholds": { "sporting": 45, "longevity": 65, "clubLegacy": 62, "nationalLegacy": 0, "life": 82 } },
+  { "id": "what-might-have-been", "title": "有些天赋没有等到它的赛季", "tone": "bittersweet", "thresholds": { "sporting": 35, "longevity": 30, "clubLegacy": 20, "nationalLegacy": 0, "life": 35 } }
+]

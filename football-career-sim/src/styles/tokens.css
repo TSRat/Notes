@@ -1,0 +1,63 @@
+:root {
+  color-scheme: dark;
+  --bg-base: #080a08;
+  --bg-raised: #0d100d;
+  --panel-bg: #111411;
+  --panel-bg-strong: #171b17;
+  --panel-border: #293029;
+  --panel-border-strong: #3b453b;
+  --text-main: #edf0e8;
+  --text-strong: #ffffff;
+  --text-muted: #9ca49a;
+  --text-dim: #6c756a;
+  --risk: #ff6a3d;
+  --success: #58d68d;
+  --club-primary: #d8ff3f;
+  --club-secondary: #17220f;
+  --club-glow: rgb(216 255 63 / 18%);
+  --club-ink: #111114;
+  --font-display: 'Anton', 'Arial Narrow', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --font-body: 'Inter', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans CJK SC', sans-serif;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --radius-sm: 2px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --header-height: 68px;
+  --duration-route: 300ms;
+  --duration-ui: 180ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --z-header: 20;
+  --z-tabbar: 30;
+  --z-drawer: 50;
+  --z-tooltip: 70;
+  --z-toast: 80;
+}
+
+.theme-north-harbor {
+  --club-primary: #f2b544;
+  --club-secondary: #192538;
+  --club-glow: rgb(242 181 68 / 20%);
+  --club-ink: #111114;
+}
+
+.theme-red-forge {
+  --club-primary: #ef4f45;
+  --club-secondary: #2c1114;
+  --club-glow: rgb(239 79 69 / 22%);
+  --club-ink: #0e0909;
+}
+
+.theme-aurora-city {
+  --club-primary: #70d6ff;
+  --club-secondary: #102936;
+  --club-glow: rgb(112 214 255 / 20%);
+  --club-ink: #071318;
+}
