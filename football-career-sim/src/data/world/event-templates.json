@@ -1,0 +1,83 @@
+[
+  { "id": "academy-offers", "stage": "academy", "kind": "club", "title": "三封青训邀请", "summary": "地域、训练质量和童年情感第一次在职业道路上发生冲突。", "timedSeconds": null, "ageRange": [16, 17], "choices": [
+    { "id": "local-path", "label": "留在家附近争取稳定出场", "riskTag": "成长稳定", "effects": { "development": 2, "wellbeing": 2, "visibility": -1 } },
+    { "id": "elite-path", "label": "进入竞争最激烈的精英学院", "riskTag": "高竞争", "effects": { "development": 4, "trust": -2, "pressure": 3 } },
+    { "id": "identity-path", "label": "选择与你童年情感最接近的俱乐部", "riskTag": "情感驱动", "effects": { "belonging": 4, "pressure": 2 } }
+  ] },
+  { "id": "position-conversion", "stage": "academy", "kind": "football", "title": "教练想改变你的位置", "summary": "新位置可能打开一线队通道，也可能削弱你最熟悉的比赛方式。", "timedSeconds": null, "ageRange": [16, 20], "choices": [
+    { "id": "accept", "label": "接受转换并投入额外训练", "riskTag": "长期成长", "effects": { "versatility": 4, "fatigue": 2 } },
+    { "id": "hybrid", "label": "要求保留原位置，同时学习新职责", "riskTag": "负荷增加", "effects": { "versatility": 2, "trust": 1, "fatigue": 3 } },
+    { "id": "decline", "label": "坚持最擅长的位置", "riskTag": "机会减少", "effects": { "specialism": 3, "trust": -2 } }
+  ] },
+  { "id": "first-professional-contract", "stage": "breakthrough", "kind": "contract", "title": "第一份职业合同", "summary": "期限、角色和经纪人承诺都已写明，但首发位置没有任何保证。", "timedSeconds": null, "ageRange": [17, 21], "choices": [
+    { "id": "long-security", "label": "接受长期保障", "riskTag": "稳定但受限", "effects": { "security": 4, "mobility": -2 } },
+    { "id": "short-opportunity", "label": "签短约，保留下一次选择", "riskTag": "合同风险", "effects": { "mobility": 3, "security": -2 } },
+    { "id": "role-clause", "label": "降低薪资，争取明确的发展计划", "riskTag": "收入较低", "effects": { "trust": 3, "security": -1 } }
+  ] },
+  { "id": "first-loan", "stage": "breakthrough", "kind": "transfer", "title": "第一次外租", "summary": "留在更强训练环境，还是去陌生城市获得真正比赛时间。", "timedSeconds": null, "ageRange": [18, 23], "choices": [
+    { "id": "accept-loan", "label": "接受能保证竞争机会的外租", "riskTag": "适应风险", "effects": { "minutes": 4, "adaptation": -2, "visibility": 2 } },
+    { "id": "stay-fight", "label": "留队争夺有限轮换", "riskTag": "可能坐板凳", "effects": { "training": 3, "minutes": -3 } },
+    { "id": "better-fit", "label": "要求经纪人寻找更适合的位置体系", "riskTag": "报价可能消失", "effects": { "fit": 3, "trust": -1 } }
+  ] },
+  { "id": "debut-last-ten", "stage": "breakthrough", "kind": "match", "title": "只剩十分钟", "summary": "教练让你上场，球队只需要守住比分，但这是第一次真正被看见。", "timedSeconds": 10, "ageRange": [17, 23], "choices": [
+    { "id": "follow-plan", "label": "严格执行位置任务", "riskTag": "稳妥", "effects": { "trust": 3, "reputation": 1 } },
+    { "id": "seek-ball", "label": "主动要球，尝试改变比赛", "riskTag": "失误风险", "effects": { "reputation": 3, "trust": -1 } },
+    { "id": "press-everything", "label": "用跑动把自己留在教练记忆里", "riskTag": "体力风险", "effects": { "trust": 2, "fatigue": 3 } }
+  ] },
+  { "id": "early-muscle-warning", "stage": "breakthrough", "kind": "medical", "title": "热身时的拉扯感", "summary": "队医确认没有撕裂，但不能保证继续比赛不会加重。", "timedSeconds": 8, "ageRange": [17, 28], "choices": [
+    { "id": "report", "label": "立即报告并退出名单", "riskTag": "错过机会", "effects": { "health": 4, "trust": 1, "minutes": -2 } },
+    { "id": "test", "label": "要求完成一次功能测试再决定", "riskTag": "有限风险", "effects": { "health": 1, "trust": 1 } },
+    { "id": "hide", "label": "不说，抓住这次首发", "riskTag": "伤病风险", "effects": { "minutes": 3, "injuryRisk": 5 } }
+  ] },
+  { "id": "family-relocation", "stage": "established", "kind": "life", "title": "家人不想再次搬家", "summary": "新报价意味着更高水平，也意味着家人重新建立生活。", "timedSeconds": null, "ageRange": [22, 34], "choices": [
+    { "id": "stay", "label": "留在当前城市", "riskTag": "竞技机会减少", "effects": { "wellbeing": 4, "mobility": -2 } },
+    { "id": "move-together", "label": "一起搬迁并安排长期支持", "riskTag": "适应成本", "effects": { "wellbeing": 1, "adaptation": -2, "careerAmbition": 3 } },
+    { "id": "move-alone", "label": "先独自加盟，再评估生活", "riskTag": "关系压力", "effects": { "careerAmbition": 4, "wellbeing": -3 } }
+  ] },
+  { "id": "media-role-question", "stage": "established", "kind": "media", "title": "记者问你是否应该首发", "summary": "事实是你连续三场替补；回答会改变公众叙事和更衣室关系。", "timedSeconds": null, "ageRange": [19, 34], "choices": [
+    { "id": "team-first", "label": "强调球队和训练表现", "riskTag": "低曝光", "effects": { "trust": 2, "reputation": 1 } },
+    { "id": "state-ambition", "label": "明确说自己已经准备好首发", "riskTag": "教练压力", "effects": { "reputation": 3, "trust": -1 } },
+    { "id": "challenge", "label": "公开质疑当前用人", "riskTag": "关系恶化", "effects": { "reputation": 2, "trust": -4 } }
+  ] },
+  { "id": "dual-national-call", "stage": "established", "kind": "national-team", "title": "两个协会都打来电话", "summary": "一边更接近你的成长经历，另一边提供更清晰的大赛道路。", "timedSeconds": null, "ageRange": [18, 27], "choices": [
+    { "id": "primary-nation", "label": "代表主要成长国家", "riskTag": "竞争更高", "effects": { "belonging": 3, "nationalOpportunity": 1 } },
+    { "id": "heritage-nation", "label": "代表家庭传承国家", "riskTag": "身份审视", "effects": { "belonging": 4, "nationalOpportunity": 3 } },
+    { "id": "wait", "label": "暂不承诺，等待正式比赛计划", "riskTag": "机会可能消失", "effects": { "nationalOpportunity": -2, "mobility": 1 } }
+  ] },
+  { "id": "manager-change", "stage": "established", "kind": "club", "title": "新教练不使用你的角色", "summary": "你的合同、能力和过去表现没有改变，但战术入口突然缩小。", "timedSeconds": null, "ageRange": [20, 34], "choices": [
+    { "id": "adapt", "label": "学习新位置与新职责", "riskTag": "短期状态下降", "effects": { "versatility": 4, "form": -2, "trust": 2 } },
+    { "id": "compete", "label": "坚持原有优势，等待机会", "riskTag": "上场减少", "effects": { "specialism": 2, "minutes": -2 } },
+    { "id": "seek-exit", "label": "要求经纪人寻找离队方案", "riskTag": "关系风险", "effects": { "mobility": 4, "trust": -3 } }
+  ] },
+  { "id": "peak-transfer", "stage": "prime", "kind": "transfer", "title": "巅峰期的三条道路", "summary": "豪门轮换、熟悉球队的核心地位，以及海外联赛的新人生同时出现。", "timedSeconds": null, "ageRange": [24, 30], "choices": [
+    { "id": "superclub", "label": "接受豪门竞争", "riskTag": "上场不确定", "effects": { "visibility": 5, "minutes": -2, "pressure": 4 } },
+    { "id": "stay-core", "label": "留下成为球队核心", "riskTag": "竞技上限未知", "effects": { "belonging": 5, "trust": 4 } },
+    { "id": "new-continent", "label": "去新的足球文化承担核心角色", "riskTag": "适应风险", "effects": { "adaptation": -3, "minutes": 4, "legacy": 2 } }
+  ] },
+  { "id": "title-decider", "stage": "prime", "kind": "match", "title": "冠军只差一个瞬间", "summary": "比赛末段仍是平局，你的球队需要胜利，身后空间正在扩大。", "timedSeconds": 10, "ageRange": [22, 34], "choices": [
+    { "id": "attack-space", "label": "冒险攻击最后一道防线", "riskTag": "转换风险", "effects": { "matchImpact": 4, "defensiveRisk": 3 } },
+    { "id": "control", "label": "保持结构，等待更好时机", "riskTag": "时间流逝", "effects": { "matchControl": 3, "matchImpact": 1 } },
+    { "id": "organise", "label": "先指挥队友保护身后，再加入进攻", "riskTag": "机会稍纵即逝", "effects": { "leadership": 3, "matchImpact": 2 } }
+  ] },
+  { "id": "long-injury", "stage": "turning-point", "kind": "medical", "title": "康复时间比合同更长", "summary": "医疗团队给出恢复区间，俱乐部还没有决定是否续约。", "timedSeconds": null, "ageRange": [21, 35], "choices": [
+    { "id": "patient-rehab", "label": "接受完整康复周期", "riskTag": "错过赛季", "effects": { "health": 5, "form": -3 } },
+    { "id": "accelerate", "label": "争取提前回到团队训练", "riskTag": "复发风险", "effects": { "form": 2, "injuryRisk": 4 } },
+    { "id": "rebuild-role", "label": "同步学习更节省身体的位置", "riskTag": "能力重构", "effects": { "versatility": 4, "pace": -1, "decisions": 2 } }
+  ] },
+  { "id": "relegation-choice", "stage": "turning-point", "kind": "club", "title": "降级之后", "summary": "合同允许离队，但队友和球迷希望你留下带队回来。", "timedSeconds": null, "ageRange": [23, 35], "choices": [
+    { "id": "stay-promotion", "label": "留下争取升级", "riskTag": "曝光下降", "effects": { "belonging": 5, "visibility": -3, "leadership": 3 } },
+    { "id": "top-flight", "label": "激活条款留在顶级联赛", "riskTag": "角色不确定", "effects": { "visibility": 2, "belonging": -3 } },
+    { "id": "wait-offers", "label": "先听完全部报价", "riskTag": "信任下降", "effects": { "mobility": 2, "trust": -2 } }
+  ] },
+  { "id": "mentor-young-player", "stage": "legacy", "kind": "life", "title": "你的替代者坐在身边", "summary": "年轻队友正在学习你的角色，他的成长也可能减少你的出场。", "timedSeconds": null, "ageRange": [30, 39], "choices": [
+    { "id": "mentor", "label": "毫无保留地帮助他", "riskTag": "位置竞争", "effects": { "legacy": 5, "minutes": -1 } },
+    { "id": "professional-distance", "label": "保持职业合作，但保留自己的细节", "riskTag": "关系普通", "effects": { "legacy": 1, "trust": 1 } },
+    { "id": "compete-only", "label": "把全部精力放回竞争", "riskTag": "更衣室评价", "effects": { "form": 2, "legacy": -2 } }
+  ] },
+  { "id": "final-contract", "stage": "legacy", "kind": "contract", "title": "最后一份合同可能已经来到", "summary": "替补留队、回到起点、跨洲核心或退役都不是失败选项。", "timedSeconds": null, "ageRange": [32, 40], "choices": [
+    { "id": "veteran-role", "label": "接受替补与导师角色", "riskTag": "出场减少", "effects": { "legacy": 3, "minutes": -2, "belonging": 2 } },
+    { "id": "return-home", "label": "回到职业起点结束生涯", "riskTag": "竞技级别下降", "effects": { "belonging": 5, "visibility": -2 } },
+    { "id": "new-league", "label": "去新的联赛继续踢球", "riskTag": "身体与适应", "effects": { "minutes": 3, "adaptation": -2, "legacy": 2 } },
+    { "id": "retire", "label": "按自己的时间退役", "riskTag": "竞技生涯结束", "effects": { "wellbeing": 3, "retire": 1 } }
+  ] }
+]
