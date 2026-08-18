@@ -5,6 +5,8 @@ import type { CareerState } from './types'
 export type CareerContextValue = {
   state: CareerState
   dispatch: Dispatch<CareerAction>
+  importCareer: (json: string) => Promise<boolean>
+  exportCareer: () => string | null
 }
 
 export const CareerContext = createContext<CareerContextValue | null>(null)

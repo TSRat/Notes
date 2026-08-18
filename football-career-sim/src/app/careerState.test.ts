@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { careerReducer, guestPlayer, initialCareerState } from './careerState'
 import type { Choice } from './types'
+import { migrateLegacyPlayer } from '../storage/migrations'
 
 const transferChoice: Choice = {
   id: 'transfer',
@@ -60,5 +61,23 @@ describe('careerReducer', () => {
 
     expect(state.player.reputation).toBe(100)
     expect(state.player.stamina).toBe(0)
+  })
+
+  it('hydrates and replaces a versioned career without losing app state', () => {
+    const career = migrateLegacyPlayer({ name: '周野', position: 'RW', completedChoices: [] })
+    const hydrated = careerReducer(initialCareerState, { type: 'hydrate', payload: { career } })
+    const replaced = careerReducer(hydrated, {
+      type: 'replace-career',
+      payload: {
+        career: { ...career, seasonYear: 2027 },
+        notices: [{ title: '赛季结算', detail: '新赛季已经开始。', tone: 'positive' }],
+      },
+    })
+
+    expect(hydrated.lifecycle).toBe('ready')
+    expect(hydrated.player.name).toBe('周野')
+    expect(replaced.career?.seasonYear).toBe(2027)
+    expect(replaced.saveStatus).toBe('saving')
+    expect(replaced.toast?.title).toBe('赛季结算')
   })
 })

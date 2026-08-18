@@ -1,3 +1,5 @@
+import type { SimCareer } from '../engine/careerTypes'
+
 export type StatKey = 'stamina' | 'technique' | 'tactics' | 'composure' | 'wellbeing' | 'reputation'
 
 export type { PlayerPosition } from '../domain/types'
@@ -131,5 +133,9 @@ export interface ToastMessage {
 
 export interface CareerState {
   player: PlayerState
+  career: SimCareer | null
   toast: ToastMessage | null
+  lifecycle: 'loading' | 'ready'
+  saveStatus: 'idle' | 'saving' | 'saved' | 'error'
+  recoveryMessage: string | null
 }
