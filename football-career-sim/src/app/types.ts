@@ -1,6 +1,7 @@
 export type StatKey = 'stamina' | 'technique' | 'tactics' | 'composure' | 'wellbeing' | 'reputation'
 
-export type PlayerPosition = 'RW' | 'CM' | 'ST' | 'CB'
+export type { PlayerPosition } from '../domain/types'
+import type { PlayerPosition } from '../domain/types'
 
 export interface ChoiceEffect extends Partial<Record<StatKey, number>> {
   currentClubId?: string
