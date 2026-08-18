@@ -31,6 +31,10 @@ export function calculateOverall(attributes: PlayerAttributes, position: PlayerP
   return clampRating(weightedValue / totalWeight)
 }
 
+export function getPositionAttributeKeys(position: PlayerPosition) {
+  return Object.keys(POSITION_WEIGHTS[position]) as AttributeKey[]
+}
+
 export function calculatePositionRatings(
   attributes: PlayerAttributes,
   positions: readonly PlayerPosition[],
