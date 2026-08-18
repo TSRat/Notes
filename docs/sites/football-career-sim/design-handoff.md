@@ -1,48 +1,79 @@
-# 《第 91 分钟》创意源实现映射
+# 设计与工程交付
 
-## 权威来源
+## 体验定位
 
-- 来源：用户在本任务中提供并批准的 Phase 3 Codex-Ready Handoff Specification。
-- 状态：`ANTIGRAVITY_DESIGN_INPUT: RECEIVED`。
-- Figma：未提供；本文件是依据批准方案生成的 **Codex implementation map**，不声称替代或伪造 Antigravity 文件。
+《第 91 分钟》采用“球员档案 × 比赛转播 × 更衣室档案馆”的视觉语言。它必须像一款可反复游玩的职业模拟器，而不是统计仪表板或足球知识网站。
 
-## 场景/Frame 映射
+## 视觉系统
 
-| Frame 名称 | 路由/状态 | 桌面 | 移动 | 静态/失败回退 |
-| --- | --- | --- | --- | --- |
-| `00 / Academy Intake` | `/` | 分屏身份与注册卡 | 单列、注册优先 | 无动画仍显示完整身份；表单错误内联 |
-| `01 / Career Hub` | `/career` | 300px / fluid / 350px；同一事件的三个视角 | 单屏 + 01/02/03 Tabbar | 默认访客档；单一面板失败不遮挡导航 |
-| `01A / Pressure Decision` | career urgent | 中央决定卡与条 | 当前 Tab 内置顶 | 减少动效为文字读秒；超时按钮禁用 |
-| `02 / Database Drawer` | 桌面打开百科 | 右侧 420px modal drawer | 不使用，跳转路由 | 焦点留在抽屉；Esc 关闭 |
-| `02M / Database Route` | `/database` | 完整页仍可直达 | 全屏检索 | 空结果带清除按钮 |
-| `03 / Matchday` | `/match/final-qualifier` | 单列沉浸广播 | 单列紧凑比分 | 未知 ID 显示可恢复错误；无侧栏通知 |
-| `04 / Result Echo` | 决策后 Toast | 右下 | 底部安全区之上 | live region 立即播报 |
+- 基础背景：`#070a08` 附近的冷黑，不使用纯黑大面积压平层级。
+- 面板：深绿黑与细边框，形成档案纸张和转播控制台的混合质感。
+- 动态主题：`--club-primary`、`--club-secondary`、`--club-ink` 来自当前俱乐部传统配色。
+- 标题：窄体高对比展示字，比赛结果和赛季编号保持广播感。
+- 正文与数据：系统中文字体与等宽/无衬线数字组合，OVR、年份和分钟始终易扫读。
+- 俱乐部视觉：三字母文字块 + 传统配色；禁止导入官方队徽、球衣或摄影素材。
 
-## Tokens → 实现
+## 核心组件状态
 
-| 设计职责 | 实现位置 |
+### DecisionButton
+
+| 状态 | 表现 |
 | --- | --- |
-| base/panel/text/club/risk colors | `src/styles/tokens.css` CSS custom properties |
-| 俱乐部主题 | 根节点 `.theme-{clubId}` |
-| type roles | `--font-display`、`--font-body`、`.utility-label` |
-| layout | `.three-pane-layout` 与 1024/768px media queries |
-| safe viewport | `min-height: 100svh`，`100dvh` 增强，safe-area padding |
-| focus | 2px `--club-primary` + 3px `--club-glow` 外环 |
-| transition | `--duration-route: 300ms`；reduced-motion 覆盖 |
+| Default | 深色底、1px 边框、明确选项与风险标签 |
+| Hover | 俱乐部主色填充，文字使用可读的 `--club-ink` |
+| Focus-visible | 2px 高对比外环，不依赖发光判断焦点 |
+| Active | `scale(.97)`，不引发布局位移 |
+| Disabled | 透明度下降且保留结果/超时解释 |
 
-## 组件映射
+### PressureTimer
 
-- `ThreePaneLayout`：保持 DOM 阅读顺序为主内容、新闻、百科；CSS 只改变视觉列位。
-- `NewsFeedList` / `NewsItem`：时间、来源、紧急级别和可交互决定。
-- `PlayerOverview` / `HexagonStatsChart`：属性文字表与 SVG 雷达双重表达，不只依赖图形。
-- `ExperienceContext`：把当前事件同步投射到社会舆情、俱乐部/训练和比赛实践三个表面，避免按足球学科拆站。
-- `CareerJourneyMap`：用青训起点、职业突破、稳定一线、巅峰期、重大转折、传承与退役六个连续阶段承载全部足球范围。
-- `PressureTimerBar` / `DecisionButton`：视觉条、读秒、超时禁用和选择后果。
-- `EncyclopediaSidebar` / `TermLink`：检索与 200ms 悬停/聚焦 Tooltip，位置限制在视口内。
-- `MatchdayPage` / `BroadcastTicker`：比分、分钟事件与一个场上决定，屏蔽 Hub 消息。
-- `ResponsiveDrawer`：桌面/平板百科叠层；移动端改走 `/database`。
-- `ToastRegion`：统一属性反馈，`aria-live=polite`。
+- 常规模式：宽度递减、数字秒数和紧迫色同时变化。
+- 读屏：文本倒数通过 live region 更新，避免只读进度条。
+- Reduced motion：取消位移动画，保留离散文字状态。
+- 到时：进入独立“未行动”结果，并开放返回时间线入口。
 
-## 实现偏差
+### ClubWordmark
 
-无 Figma 像素稿可供逐帧比对；视觉尺寸依据批准的 tokens、断点和组件规范完成。用户追加的足球知识范围已作为同一名球员可能经历的 56 个情境接入统一生涯图，没有新增独立学科路由。最终跨路线、跨视口、状态矩阵、控制台/网络、无障碍和视觉回归由 Antigravity Stage 3 执行。
+- 只输出文本缩写、名称、城市和竞赛。
+- 主色过亮时使用指定 `ink`，不得假设永远用黑字。
+- 转会时主题变量过渡 300ms；信息本身立即更新。
+
+## 响应式矩阵
+
+| 宽度 | 导航与布局 |
+| --- | --- |
+| `>1024px` | 顶部全导航；职业主区 + 右侧状态栏；世界页多列浏览 |
+| `768–1024px` | 顶部导航保留，内容转为单/双列；来源抽屉占安全宽度 |
+| `<768px` | 固定底部 Tabbar；所有内容按阅读顺序单列；为 Safari 安全区留白 |
+| `320px` | 标题缩放、按钮满宽、时间线缩进收窄；不得横向滚动 |
+
+使用 `100dvh` 并提供 `100vh` 回退；底栏计算 `env(safe-area-inset-bottom)`。
+
+## 路由与焦点
+
+- 路由切换更新 `document.title`，并通过 route announcer 告知读屏用户。
+- 页面首部提供 skip link；所有可操作元素都有可见焦点。
+- 抽屉、决定和错误消息使用语义标题与状态文本。
+- 颜色不能作为结果、风险、状态或成就的唯一编码。
+
+## 动效
+
+- 页面进入：300ms opacity + 轻微 translateY。
+- 按钮：100–160ms 状态反馈。
+- 俱乐部主题：300ms 颜色过渡。
+- 成就：短暂边框/标题揭示，不使用长时间粒子或全屏闪烁。
+- `prefers-reduced-motion: reduce` 下取消所有非必要位移和循环动画。
+
+## 当前实现边界
+
+- 简体中文为唯一完整语言；国际化结构是扩展入口，不宣称已提供英文版。
+- 桌面、平板和移动端已做 Codex 初步工程验收；Antigravity 仍需完成最终视觉、状态、无障碍与跨浏览器判定。
+- 真实俱乐部事实和模拟数值在界面与数据模型中分开标识。
+
+## 阶段状态
+
+`ANTIGRAVITY_DESIGN_INPUT: RECEIVED`
+
+`CODEX_SIX_STAGE_PRODUCTION: MR_READY_FOR_FINAL_VALIDATION`
+
+`ANTIGRAVITY_FINAL_VALIDATION: PENDING`

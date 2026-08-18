@@ -1,51 +1,65 @@
-# 《第 91 分钟》Codex 初步 QA 交付
+# QA 与最终验证交接
 
-CODEX_PHASE_2: READY_FOR_ANTIGRAVITY_VALIDATION
+日期：2026-08-19
 
-ANTIGRAVITY_PHASE_3: PENDING
+阶段：Codex 工程与初步体验验收完成；Antigravity 最终验证待执行。
 
-## 自动化门槛
+## 自动化结果
 
 | 检查 | 结果 |
 | --- | --- |
-| `npm run lint` | PASS，0 warnings |
-| `npm test -- --run` | PASS，3 个测试文件、12 个测试 |
-| `npm run build` | PASS，Vite 生产构建与 `404.html` 静态回退生成成功 |
-| `npm run check:bundle` | PASS，核心 JS 281.2KB / 500KB 未压缩预算 |
-| `npm audit --audit-level=high` | PASS，0 vulnerabilities |
-| 内容合同 | PASS，56 个生涯情境、59 个术语、6 个阶段、术语/来源/深链完整 |
-| 初学者启发式扫描 | 0 个 P0/P1/P2；1 个经人工确认的 P3 数字关系误报 |
+| `npm test` | 14 个测试文件，49 项测试通过 |
+| 标准模式分布 | 300 生涯样本落在好结局 55–65%、球星 10–15%、传奇 2–4% 验收带 |
+| `npm run lint` | 通过，0 warning |
+| `npm run build` | 通过 |
+| `npm run check:bundle` | 核心 JS 401.1 KB / 500 KB 未压缩预算，通过 |
+| `npm audit --audit-level=high` | 通过，0 vulnerabilities |
 
-## 浏览器原型检查
+覆盖的单元/契约风险包括：可复现 RNG、OVR 边界、事件 effect key、事件重复限制、赛季推进、转会、国家队、成就、结局、倒计时超时、多存档、导入导出、损坏恢复和旧存档迁移。
 
-浏览器：Chromium 自动化实浏览器；本地 Vite 生产镜像与开发态均完成抽样。控制台最终生产会话为 0 errors / 0 warnings。
+## Codex 真实浏览器初检
 
-| 视口 | 路线与状态 | 结果 |
+使用 Playwright CLI 完成以下可玩路径：
+
+1. 首页进入创建页。
+2. 创建模拟球员并从上海申花开始。
+3. 完成两次关键选择并推进赛季。
+4. 打开球员档案、世界、Barcelona 来源抽屉和博物馆。
+5. 推进至职业合同与关键比赛。
+6. 等待比赛决定超时，确认显示“决定窗口已经关闭”、记录独立后果并可返回时间线。
+
+视口与初检结果：
+
+| 视口 | 页面 | 结果 |
 | --- | --- | --- |
-| 1440×900 | `/`、`/career`、`/database?q=脑震荡`、`/match/final-qualifier`、`/match/unknown` | 三栏、表单、直达检索、沉浸比赛、错误恢复均通过 |
-| 768×1024 | `/career` + 百科 Drawer | 两栏布局；右栏隐藏；440px 抽屉打开、Esc 关闭与焦点恢复通过 |
-| 320×568 | `/`、`/career` 的消息/生涯/百科三个 Tab | 单屏底部导航通过；根文档 `scrollWidth === innerWidth`，无横向溢出 |
+| 1440×900 | `/career` | 双栏职业档案、状态带与时间线正常；无横向溢出 |
+| 768×1024 | `/world` | 平板布局正常；无横向溢出 |
+| 390×844 | `/career`、`/match/:id` | 底部导航、单列决定与比赛视图正常 |
+| 320×568 | `/career` | `scrollWidth = 320`，固定底栏存在，无横向溢出 |
 
-## 关键状态
+浏览器控制台：0 error、0 warning（React 开发提示不计为 warning）。截图保存在本地 `output/playwright/`，不进入产品提交。
 
-- 合同选择：签下红炉联后，`--club-primary` 从北港金切换为 `#ef4f45`，球员六项属性、俱乐部职业环境与 Toast 在同一结果中更新。
-- 连贯性：红炉联注册明确在今晚北港资格赛后生效，因此比赛卡与告别战不会和转会结果冲突。
-- 比赛决定：第 72 分钟选择“直塞套上的边后卫”后，第 73 分钟播报新增结果，属性 Toast 完整显示。
-- 倒计时：视觉压力条、`role=timer` 文本和超时禁用同时存在；超时不自动替玩家选择。
-- Tooltip：200ms 悬停后显示“半空间”解释；1440×900 实测边界为 `left 498 / right 818 / top 360 / bottom 494`，未越出视口。
-- 抽屉：Esc 关闭后焦点返回“足球百科”触发按钮。
-- 深链：百科“脑震荡识别与保护”可回到 `career?experience=concussion-removal` 对应阶段与情境。
-- 减少动效：`prefers-reduced-motion: reduce` 下页面动效为 `none`、滚动为 `auto`、压力条动画为 `none` 并改用静态条纹。
-- 无障碍基础：语义标题、landmark、跳到主要内容、表单 label、live region、文本属性表、SVG 替代描述、44px 触控目标和焦点环均存在。
+## 必须由 Antigravity 完成的最终验证
 
-## 性能抽样
+- 最新 Chrome、Safari、Firefox 的精确 commit 预览。
+- Mobile Safari 动态地址栏、`100dvh` 和安全区真机表现。
+- 键盘全流程、焦点顺序、抽屉关闭与可见焦点。
+- 中文屏幕阅读器的路由播报和压力倒数节奏。
+- 俱乐部主题切换的对比度，尤其白色、黄色和浅蓝主色。
+- 25–40 分钟完整生涯的节奏、重复感与结局情绪。
+- 真实俱乐部名称/传统配色使用和人物扩展入口的权利审查。
 
-本地生产镜像在 1440×900 Chromium 的一次温缓存初步抽样：navigation 48.7ms、LCP 100ms、5 个动态资源条目。该结果证明实现未越过本地预算，但不替代真实网络环境和目标设备上的 Antigravity Stage 3 性能验证。
+## 已知边界
 
-## 内容与外部来源
+- 当前只完整支持简体中文，尚无运行时语言切换。
+- 俱乐部强度是注明日期的编辑型模拟基线，不是实时排名或投注技巧。
+- 新版流程未接入第三方分析；分析文档只是未来 allowlist 契约。
+- 本地书目记录提供研究路径，但不能替代未来逐条出版信息与页码审校。
 
-规则、青少年保护、代理、脑震荡、反兴奋剂和球场运行各自使用具名官方链接。所有高风险词条都写明适用版本或专业判断边界；本产品不提供个人医疗、法律、合同或补剂建议。外部链接将在精确提交预览中再次点击验证。
+## 阶段状态
 
-## Stage 3 待办
+`ANTIGRAVITY_DESIGN_INPUT: RECEIVED`
 
-Antigravity 仍需独立完成真实 Chrome/Safari/Firefox、Mobile Safari 安全区、目标设备性能、完整键盘遍历、读屏语音、颜色对比、视觉回归和所有路线/状态矩阵的最终签字。本文件不把 Codex 初检冒充最终创意验证。
+`CODEX_SIX_STAGE_PRODUCTION: MR_READY_FOR_FINAL_VALIDATION`
+
+`ANTIGRAVITY_FINAL_VALIDATION: PENDING`
